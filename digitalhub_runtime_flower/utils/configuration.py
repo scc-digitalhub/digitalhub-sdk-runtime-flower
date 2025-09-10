@@ -104,9 +104,7 @@ def prepare_toml_parameters(
     return params
 
 
-def prepare_run_parameters(
-    parameters: dict[str, Any]
-) -> str:
+def prepare_run_parameters(parameters: dict[str, Any]) -> str:
     """
     Prepare parameters for Flower Application.
 
@@ -134,6 +132,7 @@ def prepare_run_parameters(
         args += " " + " ".join(config_lines)
 
     return args
+
 
 ##############################
 # Template of pyproject.toml
