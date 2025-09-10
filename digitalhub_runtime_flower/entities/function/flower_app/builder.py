@@ -89,8 +89,7 @@ class FunctionFlowerAppBuilder(FunctionFlowerBuilder, RuntimeEntityBuilderFlower
         # Look for source in spec
         if spec_dict := obj.get("spec", {}):
             # Check source
-            source = spec_dict.get("fab_model", {})
-            if source:
-                spec_dict["fab_model"] = source_check(source=source)["fab_model"]
-
+            fab_source = spec_dict.get("fab_source", {})
+            if fab_source:
+                spec_dict["fab_source"] = source_check(fab_source=fab_source)["fab_source"]
         return super()._parse_dict(obj, validate=validate)

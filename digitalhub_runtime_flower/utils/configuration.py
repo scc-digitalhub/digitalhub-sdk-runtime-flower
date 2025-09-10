@@ -55,7 +55,7 @@ def _value_of(value: Any) -> str:
     return str(value)
 
 
-def prepare_parameters(
+def prepare_toml_parameters(
     parameters: dict[str, Any],
     fab_source: dict[str, str],
 ) -> dict:
@@ -88,19 +88,52 @@ def prepare_parameters(
 
     # Configuration
     config_lines = []
-    for k, v in parameters.pop("config", {}).items():
-        config_lines.append(f'"{k}" = {_value_of(v)}')
-    params["config"] = "\n".join(config_lines)
-
     federation_config_lines = []
-    for k, v in parameters.pop("federation_config", {}).items():
-        federation_config_lines.append(f'"{k}" = {_value_of(v)}')
-    if not federation_config_lines:
+    for k, v in parameters.items():
+        if k.startswith("options."):
+            federation_config_lines.append(f"{k} = {_value_of(v)}")
+        else:
+            config_lines.append(f"{k} = {_value_of(v)}")
+
+    if "options.num-supernodes" not in parameters:
         federation_config_lines.append("options.num-supernodes = 10")
+
+    params["config"] = "\n".join(config_lines)
     params["federation_config"] = "\n".join(federation_config_lines)
 
     return params
 
+
+def prepare_run_parameters(
+    parameters: dict[str, Any]
+) -> str:
+    """
+    Prepare parameters for Flower Application.
+
+    Parameters
+    ----------
+    parameters : dict[str, Any]
+        The Flower Application parameters.
+
+    Returns
+    -------
+    str
+        The prepared parameters.
+    """
+    args = ""
+
+    # Configuration
+    config_lines = []
+    for k, v in parameters.items():
+        if k.startswith("options."):
+            config_lines.append(f"--federation-config '{k}={v}'")
+        else:
+            config_lines.append(f"--run-config '{k}={v}'")
+
+    if config_lines:
+        args += " " + " ".join(config_lines)
+
+    return args
 
 ##############################
 # Template of pyproject.toml

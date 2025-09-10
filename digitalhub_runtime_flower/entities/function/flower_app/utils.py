@@ -31,21 +31,21 @@ def source_check(**kwargs) -> dict:
     dict
         Checked source.
     """
-    fab_model: dict = kwargs.pop("fab_model", None)
+    fab_source: dict = kwargs.pop("fab_source", None)
     source: str = kwargs.pop("source", None)
     clientapp: str = kwargs.pop("clientapp", None)
     serverapp: str = kwargs.pop("serverapp", None)
     clientbase64: str = kwargs.pop("clientbase64", None)
     serverbase64: str = kwargs.pop("serverbase64", None)
 
-    if fab_model is not None:
-        source = fab_model.get("source")
-        clientapp = fab_model.get("clientapp")
-        serverapp = fab_model.get("serverapp")
-        clientbase64 = fab_model.get("clientbase64")
-        serverbase64 = fab_model.get("serverbase64")
+    if fab_source is not None:
+        source = fab_source.get("source")
+        clientapp = fab_source.get("clientapp")
+        serverapp = fab_source.get("serverapp")
+        clientbase64 = fab_source.get("clientbase64")
+        serverbase64 = fab_source.get("serverbase64")
 
-    kwargs["fab_model"] = _check_params(
+    kwargs["fab_source"] = _check_params(
         source=source,
         clientapp=clientapp,
         serverapp=serverapp,
@@ -100,7 +100,7 @@ def _check_params(
     if serverbase64 is not None:
         fab_source["serverbase64"] = serverbase64
 
-    return source
+    return fab_source
 
 
 def source_post_check(exec: FunctionFlowerApp) -> FunctionFlowerApp:

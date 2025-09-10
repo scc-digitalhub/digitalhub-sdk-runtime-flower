@@ -11,7 +11,7 @@ from digitalhub.runtimes._base import Runtime
 from digitalhub.utils.logger import LOGGER
 
 from digitalhub_runtime_flower.entities._commons.enums import Actions
-from digitalhub_runtime_flower.utils.configuration import collect_source, generate_pyproject_toml, prepare_parameters
+from digitalhub_runtime_flower.utils.configuration import collect_source, generate_pyproject_toml, prepare_run_parameters, prepare_toml_parameters
 from digitalhub_runtime_flower.utils.functions import run_simulation
 from digitalhub_runtime_flower.utils.outputs import build_status
 
@@ -116,14 +116,13 @@ class RuntimeFlowerApp(Runtime):
         spec = run.get("spec")
 
         LOGGER.info("Configure execution.")
-        self._configure_execution(spec["fab_source"], spec.get("parameters"))
+        run_args = self._configure_execution(spec["fab_source"], spec.get("parameters"))
 
         LOGGER.info("Executing run.")
-        results = self._execute(executable, self.runtime_dir)
+        self._execute(executable, self.runtime_dir, run_args)
 
-        LOGGER.info("Collecting outputs.")
-        output = self._collect_outputs(results)
-        status = build_status(output)
+        LOGGER.info("Building status.")
+        status = build_status(run["id"])
 
         LOGGER.info("Task completed, returning run status.")
         return status
@@ -146,7 +145,7 @@ class RuntimeFlowerApp(Runtime):
             return run_simulation
         raise ValueError(f"Action {action} not supported.")
 
-    def _configure_execution(self, fab_source: dict, parameters: dict | None = None) -> None:
+    def _configure_execution(self, fab_source: dict, parameters: dict | None = None) -> str:
         """
         Configure execution environment.
 
@@ -156,14 +155,22 @@ class RuntimeFlowerApp(Runtime):
             The Flower Application source code.
         parameters : dict
             Additional parameters for configuration.
+
+        Returns
+        -------
+        str
+            The run arguments.
         """
         self._git_source = collect_source(self.runtime_dir, fab_source)
+
         if parameters is None:
             parameters = {}
-        params = prepare_parameters(parameters, fab_source)
 
         if not self._git_source:
+            params = prepare_toml_parameters(parameters, fab_source)
             generate_pyproject_toml(self.runtime_dir, **params)
+            return ""
+        return prepare_run_parameters(parameters)
 
     def _collect_outputs(self, results: str) -> dict:
         """
