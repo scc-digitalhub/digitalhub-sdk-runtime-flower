@@ -26,6 +26,9 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+local = [
+    "flwr[simulation]",
+]
 dev = [
     "digitalhub[dev]>=0.14.0b, <0.15"
 ]
