@@ -34,7 +34,6 @@ class RunSpecFlowerServerBuild(RunSpecFlowerRun):
         image: str | None = None,
         base_image: str | None = None,
         requirements: list[str] | None = None,
-        auth_public_keys: list[str] | None = None,
         **kwargs,
     ) -> None:
         super().__init__(
@@ -58,7 +57,6 @@ class RunSpecFlowerServerBuild(RunSpecFlowerRun):
         self.image = image
         self.base_image = base_image
         self.requirements = requirements
-        self.auth_public_keys = auth_public_keys
 
 
 class RunValidatorFlowerServerBuild(RunValidatorFlowerRun):
@@ -66,14 +64,10 @@ class RunValidatorFlowerServerBuild(RunValidatorFlowerRun):
     RunValidatorFlowerServerBuild validator.
     """
 
-    # Task parameters
-    instructions: Optional[list[str]] = None
-
     # Function parameters
     image: Optional[str] = None
     base_image: Optional[str] = None
     requirements: Optional[list[str]] = None
 
-    # Run parameters
-    auth_public_keys: Optional[list[str]] = None
-    """Authentication public keys."""
+    # Task parameters
+    instructions: Optional[list[str]] = None

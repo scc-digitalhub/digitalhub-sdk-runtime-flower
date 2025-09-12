@@ -34,9 +34,6 @@ class RunSpecFlowerClientBuild(RunSpecFlowerRun):
         image: str | None = None,
         base_image: str | None = None,
         requirements: list[str] | None = None,
-        superlink: str | None = None,
-        node_config: dict | None = None,
-        root_certificates: str | None = None,
         **kwargs,
     ) -> None:
         super().__init__(
@@ -56,13 +53,10 @@ class RunSpecFlowerClientBuild(RunSpecFlowerRun):
             priority_class=priority_class,
             **kwargs,
         )
-        self.instructions = instructions
         self.image = image
         self.base_image = base_image
         self.requirements = requirements
-        self.superlink = superlink
-        self.node_config = node_config
-        self.root_certificates = root_certificates
+        self.instructions = instructions
 
 
 class RunValidatorFlowerClientBuild(RunValidatorFlowerRun):
@@ -70,20 +64,10 @@ class RunValidatorFlowerClientBuild(RunValidatorFlowerRun):
     RunValidatorFlowerClientBuild validator.
     """
 
-    # Task parameters
-    instructions: Optional[list[str]] = None
-
     # Function parameters
     image: Optional[str] = None
     base_image: Optional[str] = None
     requirements: Optional[list[str]] = None
 
-    # Run parameters
-    superlink: Optional[str] = None
-    """Flower superlink."""
-
-    node_config: Optional[dict] = None
-    """Node configuration."""
-
-    root_certificates: Optional[str] = None
-    """Root certificates."""
+    # Task parameters
+    instructions: Optional[list[str]] = None

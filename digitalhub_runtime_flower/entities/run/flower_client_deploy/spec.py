@@ -36,6 +36,9 @@ class RunSpecFlowerClientDeploy(RunSpecFlowerRun):
         superlink: str | None = None,
         node_config: dict | None = None,
         root_certificates: str | None = None,
+        private_key_secret: str | None = None,
+        public_key_secret: str | None = None,
+        isolation: str | None = None,
         **kwargs,
     ) -> None:
         super().__init__(
@@ -61,6 +64,9 @@ class RunSpecFlowerClientDeploy(RunSpecFlowerRun):
         self.superlink = superlink
         self.node_config = node_config
         self.root_certificates = root_certificates
+        self.private_key_secret = private_key_secret
+        self.public_key_secret = public_key_secret
+        self.isolation = isolation
 
 
 class RunValidatorFlowerClientDeploy(RunValidatorFlowerRun):
@@ -82,3 +88,12 @@ class RunValidatorFlowerClientDeploy(RunValidatorFlowerRun):
 
     root_certificates: Optional[str] = None
     """Root certificates."""
+
+    private_key_secret: Optional[str] = None
+    """Private key secret name."""
+
+    public_key_secret: Optional[str] = None
+    """Public key string formatted as public key PEM."""
+
+    isolation: Optional[str] = None
+    """Whether to use process or subprocess isolation."""
