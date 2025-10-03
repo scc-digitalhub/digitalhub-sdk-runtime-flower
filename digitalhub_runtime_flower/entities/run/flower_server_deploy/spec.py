@@ -34,6 +34,7 @@ class RunSpecFlowerServerDeploy(RunSpecFlowerRun):
         base_image: str | None = None,
         requirements: list[str] | None = None,
         auth_public_keys: list[str] | None = None,
+        insecure: bool = False
         **kwargs,
     ) -> None:
         super().__init__(
@@ -57,6 +58,7 @@ class RunSpecFlowerServerDeploy(RunSpecFlowerRun):
         self.base_image = base_image
         self.requirements = requirements
         self.auth_public_keys = auth_public_keys
+        self.insecure = insecure
 
 
 class RunValidatorFlowerServerDeploy(RunValidatorFlowerRun):
@@ -72,3 +74,5 @@ class RunValidatorFlowerServerDeploy(RunValidatorFlowerRun):
     # Run parameters
     auth_public_keys: Optional[list[str]] = None
     """Authentication public keys."""
+    insecure: bool = False
+    """Disable TLS verification."""
