@@ -34,7 +34,7 @@ class RunSpecFlowerServerDeploy(RunSpecFlowerRun):
         base_image: str | None = None,
         requirements: list[str] | None = None,
         auth_public_keys: list[str] | None = None,
-        insecure: bool = False
+        insecure: bool = False,
         **kwargs,
     ) -> None:
         super().__init__(
