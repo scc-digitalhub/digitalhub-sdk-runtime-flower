@@ -182,10 +182,6 @@ def _validate_handler(handler: str) -> None:
     ----------
     handler : str
         Handler.
-
-    Returns
-    -------
-    None
     """
     if not isinstance(handler, str):
         raise EntityError("Handler must be a string.")

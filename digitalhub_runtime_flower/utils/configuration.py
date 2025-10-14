@@ -179,10 +179,6 @@ def generate_pyproject_toml(
         The application configuration.
     federation_configs : dict[str, dict[str, Any]] | None
         The federations configuration.
-
-    Returns
-    -------
-    None
     """
     pyproject = root / "pyproject.toml"
     toml_parts = "\n".join(

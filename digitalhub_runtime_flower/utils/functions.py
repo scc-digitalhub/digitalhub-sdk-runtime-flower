@@ -18,10 +18,6 @@ def run_simulation(root: Path, run_args: str) -> None:
         The root directory of the project.
     run_args : str | None
         The run arguments.
-
-    Returns
-    -------
-    None
     """
     current_dir = os.getcwd()
     os.chdir(root)
