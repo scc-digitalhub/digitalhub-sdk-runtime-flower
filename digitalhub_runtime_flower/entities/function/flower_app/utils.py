@@ -10,7 +10,7 @@ from pathlib import Path
 
 from digitalhub.utils.exceptions import EntityError
 from digitalhub.utils.file_utils import eval_py_type
-from digitalhub.utils.generic_utils import encode_source
+from digitalhub.utils.generic_utils import encode_source, encode_string
 from digitalhub.utils.uri_utils import has_git_scheme, has_local_scheme
 
 if typing.TYPE_CHECKING:
@@ -33,34 +33,42 @@ def source_check(**kwargs) -> dict:
     """
     fab_source: dict = kwargs.pop("fab_source", None)
     source: str = kwargs.pop("source", None)
-    clientapp: str = kwargs.pop("clientapp", None)
-    serverapp: str = kwargs.pop("serverapp", None)
-    clientbase64: str = kwargs.pop("clientbase64", None)
-    serverbase64: str = kwargs.pop("serverbase64", None)
+    client_src: str = kwargs.pop("client_src", None)
+    server_src: str = kwargs.pop("server_src", None)
+    client_app: str = kwargs.pop("client_app", None)
+    server_app: str = kwargs.pop("server_app", None)
+
+    client_base64 = None
+    server_base64 = None
 
     if fab_source is not None:
         source = fab_source.get("source")
-        clientapp = fab_source.get("clientapp")
-        serverapp = fab_source.get("serverapp")
-        clientbase64 = fab_source.get("clientbase64")
-        serverbase64 = fab_source.get("serverbase64")
+        client_app = fab_source.get("clientapp")
+        server_app = fab_source.get("serverapp")
+        client_base64 = fab_source.get("clientbase64")
+        server_base64 = fab_source.get("serverbase64")
+        # No src in fab_source
 
     kwargs["fab_source"] = _check_params(
         source=source,
-        clientapp=clientapp,
-        serverapp=serverapp,
-        clientbase64=clientbase64,
-        serverbase64=serverbase64,
+        client_src=client_src,
+        server_src=server_src,
+        client_app=client_app,
+        server_app=server_app,
+        client_base64=client_base64,
+        server_base64=server_base64,
     )
     return kwargs
 
 
 def _check_params(
     source: str | None = None,
-    clientapp: str | None = None,
-    serverapp: str | None = None,
-    clientbase64: str | None = None,
-    serverbase64: str | None = None,
+    client_src: str | None = None,
+    server_src: str | None = None,
+    client_app: str | None = None,
+    server_app: str | None = None,
+    client_base64: str | None = None,
+    server_base64: str | None = None,
 ) -> dict:
     """
     Check source code.
@@ -69,6 +77,10 @@ def _check_params(
     ----------
     source : str | None
         Github repository URL.
+    client_src : str | None
+        Client application str source code.
+    server_src : str | None
+        Server application str source code.
     clientapp : str | None
         Local client application path.
     serverapp : str | None
@@ -88,17 +100,23 @@ def _check_params(
     if source is not None:
         fab_source["source"] = source
 
-    if clientapp is not None:
-        fab_source["clientapp"] = clientapp
+    if client_app is not None:
+        fab_source["clientapp"] = client_app
 
-    if serverapp is not None:
-        fab_source["serverapp"] = serverapp
+    if server_app is not None:
+        fab_source["serverapp"] = server_app
 
-    if clientbase64 is not None:
-        fab_source["clientbase64"] = clientbase64
+    if client_src is not None or client_base64 is not None:
+        if client_src is not None:
+            fab_source["clientbase64"] = encode_string(client_src)
+        else:
+            fab_source["clientbase64"] = client_base64
 
-    if serverbase64 is not None:
-        fab_source["serverbase64"] = serverbase64
+    if server_src is not None or server_base64 is not None:
+        if server_src is not None:
+            fab_source["serverbase64"] = encode_string(server_src)
+        else:
+            fab_source["serverbase64"] = server_base64
 
     return fab_source
 
@@ -120,29 +138,30 @@ def source_post_check(exec: FunctionFlowerApp) -> FunctionFlowerApp:
     if exec.spec.fab_source is None:
         return exec
 
+    # Get clientapp and serverapp
+    clientapp = exec.spec.fab_source.get("clientapp", None)
+    serverapp = exec.spec.fab_source.get("serverapp", None)
+    if clientapp is None or serverapp is None:
+        raise EntityError("Either source or both clientapp and serverapp must be provided.")
+
+    # Return if git source
     git_source = exec.spec.fab_source.get("source", None)
     if git_source is not None:
         if not has_git_scheme(git_source):
             raise EntityError("Source must be a valid git URL.")
         return exec
 
+    # Return if already encoded
     clientappbase64 = exec.spec.fab_source.get("clientbase64", None)
     serverappbase64 = exec.spec.fab_source.get("serverbase64", None)
-
-    clientapp = exec.spec.fab_source.get("clientapp", None)
-    serverapp = exec.spec.fab_source.get("serverapp", None)
-    if clientapp is None or serverapp is None:
-        raise EntityError("Either source or both clientapp and serverapp must be provided.")
-
-    clientapp = _validate_handler(clientapp)
-    serverapp = _validate_handler(serverapp)
-
     if clientappbase64 is not None and serverappbase64 is not None:
         return exec
 
     # Encode clientapp and serverapp
-
     try:
+        clientapp = _validate_handler(clientapp)
+        serverapp = _validate_handler(serverapp)
+
         clientapp_path = _parse_local_app(clientapp)
         if has_local_scheme(clientapp_path) and Path(clientapp_path).is_file():
             exec.spec.fab_source["clientappbase64"] = encode_source(clientapp_path)

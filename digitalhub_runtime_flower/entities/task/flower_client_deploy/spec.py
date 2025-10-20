@@ -4,16 +4,16 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.task._base.spec import TaskSpec, TaskValidator
+from digitalhub.entities.task._base.spec import TaskSpecFunction, TaskValidatorFunction
 
 
-class TaskSpecFlowerClientDeploy(TaskSpec):
+class TaskSpecFlowerClientDeploy(TaskSpecFunction):
     """
     TaskSpecFlowerClientDeploy specifications.
     """
 
 
-class TaskValidatorFlowerClientDeploy(TaskValidator):
+class TaskValidatorFlowerClientDeploy(TaskValidatorFunction):
     """
     TaskValidatorFlowerClientDeploy validator.
     """
