@@ -32,7 +32,7 @@ def source_check(**kwargs) -> dict:
         Checked source.
     """
     fab_source: dict = kwargs.pop("fab_source", None)
-    source: str = kwargs.pop("source", None)
+    git_source: str = kwargs.pop("git_source", None)
     client_src: str = kwargs.pop("client_src", None)
     server_src: str = kwargs.pop("server_src", None)
     client_app: str = kwargs.pop("client_app", None)
@@ -42,7 +42,7 @@ def source_check(**kwargs) -> dict:
     server_base64 = None
 
     if fab_source is not None:
-        source = fab_source.get("source")
+        git_source = fab_source.get("source")
         client_app = fab_source.get("clientapp")
         server_app = fab_source.get("serverapp")
         client_base64 = fab_source.get("clientbase64")
@@ -50,7 +50,7 @@ def source_check(**kwargs) -> dict:
         # No src in fab_source
 
     kwargs["fab_source"] = _check_params(
-        source=source,
+        git_source=git_source,
         client_src=client_src,
         server_src=server_src,
         client_app=client_app,
@@ -62,7 +62,7 @@ def source_check(**kwargs) -> dict:
 
 
 def _check_params(
-    source: str | None = None,
+    git_source: str | None = None,
     client_src: str | None = None,
     server_src: str | None = None,
     client_app: str | None = None,
@@ -75,7 +75,7 @@ def _check_params(
 
     Parameters
     ----------
-    source : str | None
+    git_source : str | None
         Github repository URL.
     client_src : str | None
         Client application str source code.
@@ -97,8 +97,8 @@ def _check_params(
     """
     fab_source = {}
 
-    if source is not None:
-        fab_source["source"] = source
+    if git_source is not None:
+        fab_source["source"] = git_source
 
     if client_app is not None:
         fab_source["clientapp"] = client_app
@@ -138,18 +138,18 @@ def source_post_check(exec: FunctionFlowerApp) -> FunctionFlowerApp:
     if exec.spec.fab_source is None:
         return exec
 
-    # Get clientapp and serverapp
-    clientapp = exec.spec.fab_source.get("clientapp", None)
-    serverapp = exec.spec.fab_source.get("serverapp", None)
-    if clientapp is None or serverapp is None:
-        raise EntityError("Either source or both clientapp and serverapp must be provided.")
-
     # Return if git source
     git_source = exec.spec.fab_source.get("source", None)
     if git_source is not None:
         if not has_git_scheme(git_source):
             raise EntityError("Source must be a valid git URL.")
         return exec
+
+    # Get clientapp and serverapp
+    clientapp = exec.spec.fab_source.get("clientapp", None)
+    serverapp = exec.spec.fab_source.get("serverapp", None)
+    if clientapp is None or serverapp is None:
+        raise EntityError("Either git_source or both client_app and server_app must be provided.")
 
     # Return if already encoded
     clientappbase64 = exec.spec.fab_source.get("clientbase64", None)
