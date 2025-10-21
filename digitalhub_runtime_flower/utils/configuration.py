@@ -36,8 +36,8 @@ def collect_source(root: Path, fab_source: dict) -> bool:
     if source is not None:
         clone_repository(root, source.removeprefix("git+"))
         return True
-    write_text(root / "client.py", decode_base64_string(fab_source.get("clientappbase64")))
-    write_text(root / "server.py", decode_base64_string(fab_source.get("serverappbase64")))
+    write_text(root / "client.py", decode_base64_string(fab_source.get("clientbase64")))
+    write_text(root / "server.py", decode_base64_string(fab_source.get("serverbase64")))
     return False
 
 
@@ -83,8 +83,8 @@ def prepare_toml_parameters(
     params["publisher"] = parameters.pop("publisher", "digitalhub-runtime-flower")
     params["dependencies"] = ", ".join([f'"{dep}"' for dep in parameters.pop("dependencies", [])])
     params["packages"] = ", ".join([f'"{pkg}"' for pkg in parameters.pop("packages", [])])
-    params["server_app"] = fab_source.get("serverapp").split(":")[1]
-    params["client_app"] = fab_source.get("clientapp").split(":")[1]
+    params["server_app"] = fab_source.get("serverapp").split(":")[-1]
+    params["client_app"] = fab_source.get("clientapp").split(":")[-1]
 
     # Configuration
     config_lines = []
