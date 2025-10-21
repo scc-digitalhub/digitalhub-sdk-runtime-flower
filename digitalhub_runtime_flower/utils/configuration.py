@@ -95,10 +95,6 @@ def prepare_toml_parameters(
         else:
             config_lines.append(f"{k} = {_value_of(v)}")
 
-    if "num-server-rounds" not in parameters:
-        config_lines.append("num-server-rounds = 3")
-
-
     if "options.num-supernodes" not in parameters:
         federation_config_lines.append("options.num-supernodes = 10")
 
