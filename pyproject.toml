@@ -22,7 +22,7 @@ classifiers = [
 keywords = ["data", "dataops", "kubernetes"]
 requires-python = ">=3.9, <3.13"
 dependencies = [
-"digitalhub>=0.14.0b, <0.15",
+"digitalhub>=0.14.0, <0.15",
 ]
 
 [project.optional-dependencies]
@@ -30,7 +30,7 @@ local = [
     "flwr[simulation]",
 ]
 dev = [
-    "digitalhub[dev]>=0.14.0b, <0.15"
+    "digitalhub[dev]>=0.14.0, <0.15"
 ]
 
 [project.urls]
