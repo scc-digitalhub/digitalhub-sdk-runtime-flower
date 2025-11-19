@@ -4,8 +4,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 from digitalhub_runtime_flower.entities.function._base.spec import FunctionSpecFlower, FunctionValidatorFlower
 from digitalhub_runtime_flower.entities.function.flower_app.models import FABSource
 
@@ -37,4 +35,4 @@ class FunctionValidatorFlowerApp(FunctionValidatorFlower):
     FunctionValidatorFlowerApp validator.
     """
 
-    fab_source: Optional[FABSource] = None
+    fab_source: FABSource | None = None

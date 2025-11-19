@@ -4,8 +4,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 from pydantic import BaseModel
 
 
@@ -14,17 +12,17 @@ class FABSource(BaseModel):
     FABModel for Flower Application Bundle.
     """
 
-    source: Optional[str] = None
+    source: str | None = None
     """Git source."""
 
-    clientapp: Optional[str] = None
+    clientapp: str | None = None
     """ClientApp source."""
 
-    serverapp: Optional[str] = None
+    serverapp: str | None = None
     """ServerApp source."""
 
-    clientbase64: Optional[str] = None
+    clientbase64: str | None = None
     """ClientBase64 source."""
 
-    serverbase64: Optional[str] = None
+    serverbase64: str | None = None
     """ServerBase64 source."""

@@ -4,8 +4,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 from digitalhub.entities.task._base.spec import TaskSpecFunction, TaskValidatorFunction
 
 
@@ -42,4 +40,4 @@ class TaskValidatorFlowerAppTrain(TaskValidatorFunction):
     TaskValidatorFlowerAppTrain validator.
     """
 
-    schedule: Optional[str] = None
+    schedule: str | None = None

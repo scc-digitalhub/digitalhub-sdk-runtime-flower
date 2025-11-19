@@ -4,8 +4,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 from digitalhub_runtime_flower.entities.run._base.spec import RunSpecFlowerRun, RunValidatorFlowerRun
 
 
@@ -65,23 +63,23 @@ class RunValidatorFlowerAppTrain(RunValidatorFlowerRun):
     """
 
     # Task parameters
-    schedule: Optional[str] = None
+    schedule: str | None = None
 
     # Function parameters
-    fab_source: Optional[dict] = None
-    image: Optional[str] = None
-    base_image: Optional[str] = None
-    requirements: Optional[list[str]] = None
+    fab_source: dict | None = None
+    image: str | None = None
+    base_image: str | None = None
+    requirements: list[str] | None = None
 
     # Run parameters
-    parameters: Optional[dict] = None
+    parameters: dict | None = None
     """Run parameters."""
 
-    federation: Optional[str] = None
+    federation: str | None = None
     """Flower federation."""
 
-    superlink: Optional[str] = None
+    superlink: str | None = None
     """Flower superlink."""
 
-    root_certificates: Optional[str] = None
+    root_certificates: str | None = None
     """Root certificates."""

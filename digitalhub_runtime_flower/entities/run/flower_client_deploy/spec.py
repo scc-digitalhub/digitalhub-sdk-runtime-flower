@@ -4,8 +4,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 from digitalhub_runtime_flower.entities.run._base.spec import RunSpecFlowerRun, RunValidatorFlowerRun
 
 
@@ -65,25 +63,25 @@ class RunValidatorFlowerClientDeploy(RunValidatorFlowerRun):
     """
 
     # Function parameters
-    image: Optional[str] = None
-    base_image: Optional[str] = None
-    requirements: Optional[list[str]] = None
+    image: str | None = None
+    base_image: str | None = None
+    requirements: list[str] | None = None
 
     # Run parameters
-    superlink: Optional[str] = None
+    superlink: str | None = None
     """Flower superlink."""
 
-    node_config: Optional[dict] = None
+    node_config: dict | None = None
     """Node configuration."""
 
-    root_certificates: Optional[str] = None
+    root_certificates: str | None = None
     """Root certificates."""
 
-    private_key_secret: Optional[str] = None
+    private_key_secret: str | None = None
     """Private key secret name."""
 
-    public_key_secret: Optional[str] = None
+    public_key_secret: str | None = None
     """Public key string formatted as public key PEM."""
 
-    isolation: Optional[str] = None
+    isolation: str | None = None
     """Whether to use process or subprocess isolation."""

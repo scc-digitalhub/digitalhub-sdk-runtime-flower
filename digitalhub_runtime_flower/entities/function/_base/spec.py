@@ -4,8 +4,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 from digitalhub.entities.function._base.spec import FunctionSpec, FunctionValidator
 
 
@@ -32,6 +30,6 @@ class FunctionValidatorFlower(FunctionValidator):
     FunctionValidatorFlower validator.
     """
 
-    image: Optional[str] = None
-    base_image: Optional[str] = None
-    requirements: Optional[list[str]] = None
+    image: str | None = None
+    base_image: str | None = None
+    requirements: list[str] | None = None

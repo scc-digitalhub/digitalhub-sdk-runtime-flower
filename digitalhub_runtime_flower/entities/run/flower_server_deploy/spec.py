@@ -4,8 +4,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 from digitalhub_runtime_flower.entities.run._base.spec import RunSpecFlowerRun, RunValidatorFlowerRun
 
 
@@ -57,12 +55,12 @@ class RunValidatorFlowerServerDeploy(RunValidatorFlowerRun):
     """
 
     # Function parameters
-    image: Optional[str] = None
-    base_image: Optional[str] = None
-    requirements: Optional[list[str]] = None
+    image: str | None = None
+    base_image: str | None = None
+    requirements: list[str] | None = None
 
     # Run parameters
-    auth_public_keys: Optional[list[str]] = None
+    auth_public_keys: list[str] | None = None
     """Authentication public keys."""
     insecure: bool = False
     """Disable TLS verification."""

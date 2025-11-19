@@ -4,8 +4,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 from digitalhub_runtime_flower.entities.run._base.spec import RunSpecFlowerRun, RunValidatorFlowerRun
 
 
@@ -55,9 +53,9 @@ class RunValidatorFlowerServerBuild(RunValidatorFlowerRun):
     """
 
     # Function parameters
-    image: Optional[str] = None
-    base_image: Optional[str] = None
-    requirements: Optional[list[str]] = None
+    image: str | None = None
+    base_image: str | None = None
+    requirements: list[str] | None = None
 
     # Task parameters
-    instructions: Optional[list[str]] = None
+    instructions: list[str] | None = None

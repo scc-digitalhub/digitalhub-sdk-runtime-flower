@@ -3,8 +3,6 @@
 # SPDX-License-Identifier: Apache-2.0
 from __future__ import annotations
 
-from typing import Optional
-
 from digitalhub.entities.task._base.spec import TaskSpecFunction, TaskValidatorFunction
 
 
@@ -41,4 +39,4 @@ class TaskValidatorFlowerServerBuild(TaskValidatorFunction):
     TaskValidatorFlowerServerBuild validator.
     """
 
-    instructions: Optional[list[str]] = None
+    instructions: list[str] | None = None
