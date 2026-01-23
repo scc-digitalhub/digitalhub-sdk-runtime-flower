@@ -30,6 +30,7 @@
     },
     "federation": "demo-federation",
     "superlink": "https://superlink.example.com",
+    "root_certificates": null,
     "profile": "1xa100",
     "local_execution": false,
     "resources": {

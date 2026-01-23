@@ -15,6 +15,9 @@
   "spec": {
     "instructions": ["pip install --upgrade pip", "pip install flwr"],
     "profile": "default",
+    "envs": [],
+    "secrets": [],
+    "volumes": [],
     "resources": {
       "cpu": "1",
       "mem": "1Gi"

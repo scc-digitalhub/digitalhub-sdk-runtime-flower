@@ -14,6 +14,8 @@
   "project": "demo-flower",
   "spec": {
     "profile": "default",
+    "secrets": [],
+    "volumes": [],
     "envs": [
       {
         "name": "CLIENT_ENV",

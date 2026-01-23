@@ -19,6 +19,12 @@
     "image": "flower-client:latest",
     "base_image": "python:3.11-slim",
     "requirements": ["flwr>=1.10.0", "numpy>=1.24.0"],
+    "isolation": null,
+    "node_config": null,
+    "private_key_secret": null,
+    "public_key_secret": null,
+    "root_certificates": null,
+    "superlink": null,
     "profile": "default",
     "local_execution": false,
     "resources": {

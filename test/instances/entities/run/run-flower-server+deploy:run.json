@@ -18,6 +18,7 @@
     "image": "flower-server:latest",
     "base_image": "python:3.11-slim",
     "requirements": ["flwr>=1.10.0"],
+    "auth_public_keys": null,
     "profile": "default",
     "local_execution": false,
     "resources": {
