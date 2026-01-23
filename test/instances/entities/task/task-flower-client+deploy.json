@@ -1,0 +1,39 @@
+{
+  "id": "b8c9d0e1-f2a3-4567-2345-678901234567",
+  "key": "store://demo-flower/task/flower-client+deploy/b8c9d0e1-f2a3-4567-2345-678901234567",
+  "kind": "flower-client+deploy",
+  "metadata": {
+    "name": "b8c9d0e1-f2a3-4567-2345-678901234567",
+    "updated_by": "digitalhubdev",
+    "project": "demo-flower",
+    "updated": "2024-11-20T10:58:45.487Z",
+    "created_by": "digitalhubdev",
+    "created": "2024-11-20T10:58:45.453Z"
+  },
+  "name": "b8c9d0e1-f2a3-4567-2345-678901234567",
+  "project": "demo-flower",
+  "spec": {
+    "profile": "default",
+    "envs": [
+      {
+        "name": "CLIENT_ENV",
+        "value": "test"
+      }
+    ],
+    "resources": {
+      "cpu": "1",
+      "mem": "512Mi"
+    },
+    "function": "flower-client://demo-flower/func-client:c3d4e5f6-a7b8-9012-cdef-123456789012"
+  },
+  "status": {
+    "transitions": [
+      {
+        "status": "READY",
+        "time": "2024-11-20T10:58:45.486663781Z"
+      }
+    ],
+    "state": "READY"
+  },
+  "user": "digitalhubdev"
+}

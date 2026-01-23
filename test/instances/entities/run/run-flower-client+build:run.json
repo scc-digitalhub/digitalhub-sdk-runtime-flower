@@ -1,0 +1,48 @@
+{
+  "id": "f2a3b4c5-d6e7-8901-6789-012345678901",
+  "key": "store://demo-flower/run/flower-client+build:run/f2a3b4c5-d6e7-8901-6789-012345678901",
+  "kind": "flower-client+build:run",
+  "metadata": {
+    "name": "f2a3b4c5-d6e7-8901-6789-012345678901",
+    "updated_by": "digitalhubdev",
+    "project": "demo-flower",
+    "updated": "2024-11-20T11:15:27.947Z",
+    "created_by": "digitalhubdev",
+    "created": "2024-11-20T11:14:18.679Z"
+  },
+  "name": "f2a3b4c5-d6e7-8901-6789-012345678901",
+  "project": "demo-flower",
+  "spec": {
+    "task": "flower-client+build://demo-flower/a7b8c9d0-e1f2-3456-1234-567890123456",
+    "function": "flower-client://demo-flower/func-client:c3d4e5f6-a7b8-9012-cdef-123456789012",
+    "instructions": ["pip install --upgrade pip", "pip install flwr"],
+    "image": "flower-client:latest",
+    "base_image": "python:3.11-slim",
+    "requirements": ["flwr>=1.10.0", "numpy>=1.24.0"],
+    "profile": "default",
+    "local_execution": false,
+    "resources": {
+      "cpu": "1",
+      "mem": "1Gi"
+    }
+  },
+  "status": {
+    "state": "COMPLETED",
+    "transitions": [
+      {
+        "status": "COMPLETED",
+        "time": "2024-11-20T11:15:27.874388072Z"
+      },
+      {
+        "status": "RUNNING",
+        "message": "job j-flower-client-build-f2a3b4c5-d6e7-8901-6789-012345678901 created",
+        "time": "2024-11-20T11:14:18.747933828Z"
+      },
+      {
+        "status": "READY",
+        "time": "2024-11-20T11:14:18.69615452Z"
+      }
+    ]
+  },
+  "user": "digitalhubdev"
+}

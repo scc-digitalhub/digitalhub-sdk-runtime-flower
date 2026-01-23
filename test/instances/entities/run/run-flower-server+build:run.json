@@ -1,0 +1,62 @@
+{
+  "id": "d0e1f2a3-b4c5-6789-4567-890123456789",
+  "key": "store://demo-flower/run/flower-server+build:run/d0e1f2a3-b4c5-6789-4567-890123456789",
+  "kind": "flower-server+build:run",
+  "metadata": {
+    "name": "d0e1f2a3-b4c5-6789-4567-890123456789",
+    "updated_by": "digitalhubdev",
+    "project": "demo-flower",
+    "updated": "2024-11-20T11:15:27.947Z",
+    "created_by": "digitalhubdev",
+    "created": "2024-11-20T11:14:18.679Z"
+  },
+  "name": "d0e1f2a3-b4c5-6789-4567-890123456789",
+  "project": "demo-flower",
+  "spec": {
+    "task": "flower-server+build://demo-flower/e5f6a7b8-c9d0-1234-ef12-345678901234",
+    "function": "flower-server://demo-flower/func-server:b2c3d4e5-f6a7-8901-bcde-f12345678901",
+    "instructions": ["apt-get update", "apt-get install -y git"],
+    "image": "flower-server:latest",
+    "base_image": "python:3.11-slim",
+    "requirements": ["flwr>=1.10.0"],
+    "profile": "default",
+    "local_execution": false,
+    "resources": {
+      "cpu": "2",
+      "mem": "2Gi"
+    },
+    "envs": [
+      {
+        "name": "BUILD_ENV",
+        "value": "production"
+      }
+    ],
+    "secrets": ["docker-registry"],
+    "volumes": [
+      {
+        "name": "volume1",
+        "volume_type": "empty_dir",
+        "mount_path": "/workspace"
+      }
+    ]
+  },
+  "status": {
+    "state": "COMPLETED",
+    "transitions": [
+      {
+        "status": "COMPLETED",
+        "time": "2024-11-20T11:15:27.874388072Z"
+      },
+      {
+        "status": "RUNNING",
+        "message": "job j-flower-server-build-d0e1f2a3-b4c5-6789-4567-890123456789 created",
+        "time": "2024-11-20T11:14:18.747933828Z"
+      },
+      {
+        "status": "READY",
+        "time": "2024-11-20T11:14:18.69615452Z"
+      }
+    ]
+  },
+  "user": "digitalhubdev"
+}

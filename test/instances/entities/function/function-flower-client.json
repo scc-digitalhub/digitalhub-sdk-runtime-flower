@@ -1,0 +1,26 @@
+{
+  "id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+  "key": "store://demo-flower/function/flower-client/func-client:c3d4e5f6-a7b8-9012-cdef-123456789012",
+  "kind": "flower-client",
+  "metadata": {
+    "created": "2024-11-20T10:46:36.261Z",
+    "name": "func-client",
+    "updated_by": "digitalhubdev",
+    "project": "demo-flower",
+    "embedded": false,
+    "updated": "2024-11-20T10:46:36.261Z",
+    "created_by": "digitalhubdev",
+    "version": "c3d4e5f6-a7b8-9012-cdef-123456789012"
+  },
+  "name": "func-client",
+  "project": "demo-flower",
+  "spec": {
+    "image": "flower-client:latest",
+    "base_image": "python:3.11-slim",
+    "requirements": ["flwr>=1.10.0", "numpy>=1.24.0"]
+  },
+  "status": {
+    "state": "CREATED"
+  },
+  "user": "digitalhubdev"
+}

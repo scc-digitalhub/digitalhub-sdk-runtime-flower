@@ -1,0 +1,26 @@
+{
+  "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+  "key": "store://demo-flower/function/flower-server/func-server:b2c3d4e5-f6a7-8901-bcde-f12345678901",
+  "kind": "flower-server",
+  "metadata": {
+    "created": "2024-11-20T10:46:36.261Z",
+    "name": "func-server",
+    "updated_by": "digitalhubdev",
+    "project": "demo-flower",
+    "embedded": false,
+    "updated": "2024-11-20T10:46:36.261Z",
+    "created_by": "digitalhubdev",
+    "version": "b2c3d4e5-f6a7-8901-bcde-f12345678901"
+  },
+  "name": "func-server",
+  "project": "demo-flower",
+  "spec": {
+    "image": "flower-server:latest",
+    "base_image": "python:3.11-slim",
+    "requirements": ["flwr>=1.10.0"]
+  },
+  "status": {
+    "state": "CREATED"
+  },
+  "user": "digitalhubdev"
+}

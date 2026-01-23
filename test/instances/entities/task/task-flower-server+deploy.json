@@ -1,0 +1,47 @@
+{
+  "id": "f6a7b8c9-d0e1-2345-f123-456789012345",
+  "key": "store://demo-flower/task/flower-server+deploy/f6a7b8c9-d0e1-2345-f123-456789012345",
+  "kind": "flower-server+deploy",
+  "metadata": {
+    "name": "f6a7b8c9-d0e1-2345-f123-456789012345",
+    "updated_by": "digitalhubdev",
+    "project": "demo-flower",
+    "updated": "2024-11-20T10:58:45.487Z",
+    "created_by": "digitalhubdev",
+    "created": "2024-11-20T10:58:45.453Z"
+  },
+  "name": "f6a7b8c9-d0e1-2345-f123-456789012345",
+  "project": "demo-flower",
+  "spec": {
+    "profile": "default",
+    "volumes": [
+      {
+        "name": "volume1",
+        "volume_type": "persistent_volume_claim",
+        "mount_path": "/data"
+      }
+    ],
+    "envs": [
+      {
+        "name": "ENV",
+        "value": "production"
+      }
+    ],
+    "resources": {
+      "cpu": "1",
+      "mem": "1Gi"
+    },
+    "secrets": ["flower-secret"],
+    "function": "flower-server://demo-flower/func-server:b2c3d4e5-f6a7-8901-bcde-f12345678901"
+  },
+  "status": {
+    "transitions": [
+      {
+        "status": "READY",
+        "time": "2024-11-20T10:58:45.486663781Z"
+      }
+    ],
+    "state": "READY"
+  },
+  "user": "digitalhubdev"
+}

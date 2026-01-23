@@ -1,0 +1,34 @@
+{
+  "id": "a7b8c9d0-e1f2-3456-1234-567890123456",
+  "key": "store://demo-flower/task/flower-client+build/a7b8c9d0-e1f2-3456-1234-567890123456",
+  "kind": "flower-client+build",
+  "metadata": {
+    "name": "a7b8c9d0-e1f2-3456-1234-567890123456",
+    "updated_by": "digitalhubdev",
+    "project": "demo-flower",
+    "updated": "2024-11-20T10:58:45.487Z",
+    "created_by": "digitalhubdev",
+    "created": "2024-11-20T10:58:45.453Z"
+  },
+  "name": "a7b8c9d0-e1f2-3456-1234-567890123456",
+  "project": "demo-flower",
+  "spec": {
+    "instructions": ["pip install --upgrade pip", "pip install flwr"],
+    "profile": "default",
+    "resources": {
+      "cpu": "1",
+      "mem": "1Gi"
+    },
+    "function": "flower-client://demo-flower/func-client:c3d4e5f6-a7b8-9012-cdef-123456789012"
+  },
+  "status": {
+    "transitions": [
+      {
+        "status": "READY",
+        "time": "2024-11-20T10:58:45.486663781Z"
+      }
+    ],
+    "state": "READY"
+  },
+  "user": "digitalhubdev"
+}

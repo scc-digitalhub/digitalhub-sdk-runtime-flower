@@ -1,0 +1,78 @@
+{
+  "id": "c9d0e1f2-a3b4-5678-3456-789012345678",
+  "key": "store://demo-flower/run/flower-app+train:run/c9d0e1f2-a3b4-5678-3456-789012345678",
+  "kind": "flower-app+train:run",
+  "metadata": {
+    "name": "c9d0e1f2-a3b4-5678-3456-789012345678",
+    "updated_by": "digitalhubdev",
+    "project": "demo-flower",
+    "updated": "2024-11-20T11:15:27.947Z",
+    "created_by": "digitalhubdev",
+    "created": "2024-11-20T11:14:18.679Z"
+  },
+  "name": "c9d0e1f2-a3b4-5678-3456-789012345678",
+  "project": "demo-flower",
+  "spec": {
+    "task": "flower-app+train://demo-flower/d4e5f6a7-b8c9-0123-def1-234567890123",
+    "function": "flower-app://demo-flower/func-app:a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "schedule": "0 0 * * *",
+    "fab_source": {
+      "source": "git+https://github.com/example/flower-app",
+      "clientapp": "client:app",
+      "serverapp": "server:app"
+    },
+    "image": "flower-app:latest",
+    "base_image": "python:3.11-slim",
+    "requirements": ["flwr>=1.10.0", "torch>=2.0.0"],
+    "parameters": {
+      "num_rounds": 10,
+      "local_epochs": 5
+    },
+    "federation": "demo-federation",
+    "superlink": "https://superlink.example.com",
+    "profile": "1xa100",
+    "local_execution": false,
+    "resources": {
+      "cpu": "1",
+      "mem": "1Gi",
+      "gpu": "1"
+    },
+    "envs": [
+      {
+        "name": "USER",
+        "value": "test"
+      }
+    ],
+    "secrets": ["secret-key"],
+    "volumes": [
+      {
+        "name": "volume1",
+        "volume_type": "empty_dir",
+        "mount_path": "/volume1"
+      }
+    ]
+  },
+  "status": {
+    "state": "COMPLETED",
+    "transitions": [
+      {
+        "status": "COMPLETED",
+        "time": "2024-11-20T11:15:27.874388072Z"
+      },
+      {
+        "status": "RUNNING",
+        "message": "job j-flower-app-train-c9d0e1f2-a3b4-5678-3456-789012345678 created",
+        "time": "2024-11-20T11:14:18.747933828Z"
+      },
+      {
+        "status": "READY",
+        "time": "2024-11-20T11:14:18.69615452Z"
+      },
+      {
+        "status": "BUILT",
+        "time": "2024-11-20T11:14:18.685174371Z"
+      }
+    ]
+  },
+  "user": "digitalhubdev"
+}

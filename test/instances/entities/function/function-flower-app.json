@@ -1,0 +1,31 @@
+{
+  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "key": "store://demo-flower/function/flower-app/func-app:a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "kind": "flower-app",
+  "metadata": {
+    "created": "2024-11-20T10:46:36.261Z",
+    "name": "func-app",
+    "updated_by": "digitalhubdev",
+    "project": "demo-flower",
+    "embedded": false,
+    "updated": "2024-11-20T10:46:36.261Z",
+    "created_by": "digitalhubdev",
+    "version": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+  },
+  "name": "func-app",
+  "project": "demo-flower",
+  "spec": {
+    "fab_source": {
+      "source": "git+https://github.com/example/flower-app",
+      "clientapp": "client:app",
+      "serverapp": "server:app"
+    },
+    "image": "flower-app:latest",
+    "base_image": "python:3.11-slim",
+    "requirements": ["flwr>=1.10.0", "torch>=2.0.0"]
+  },
+  "status": {
+    "state": "CREATED"
+  },
+  "user": "digitalhubdev"
+}

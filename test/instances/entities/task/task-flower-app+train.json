@@ -1,0 +1,53 @@
+{
+  "id": "d4e5f6a7-b8c9-0123-def1-234567890123",
+  "key": "store://demo-flower/task/flower-app+train/d4e5f6a7-b8c9-0123-def1-234567890123",
+  "kind": "flower-app+train",
+  "metadata": {
+    "name": "d4e5f6a7-b8c9-0123-def1-234567890123",
+    "updated_by": "digitalhubdev",
+    "project": "demo-flower",
+    "updated": "2024-11-20T10:58:45.487Z",
+    "created_by": "digitalhubdev",
+    "created": "2024-11-20T10:58:45.453Z"
+  },
+  "name": "d4e5f6a7-b8c9-0123-def1-234567890123",
+  "project": "demo-flower",
+  "spec": {
+    "schedule": "0 0 * * *",
+    "profile": "1xa100",
+    "volumes": [
+      {
+        "name": "volume1",
+        "volume_type": "empty_dir",
+        "mount_path": "/volume1"
+      }
+    ],
+    "envs": [
+      {
+        "name": "USER",
+        "value": "test"
+      }
+    ],
+    "resources": {
+      "cpu": "1",
+      "mem": "1Gi",
+      "gpu": "1"
+    },
+    "secrets": ["secret-key"],
+    "function": "flower-app://demo-flower/func-app:a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+  },
+  "status": {
+    "transitions": [
+      {
+        "status": "READY",
+        "time": "2024-11-20T10:58:45.486663781Z"
+      },
+      {
+        "status": "BUILT",
+        "time": "2024-11-20T10:58:45.464157733Z"
+      }
+    ],
+    "state": "READY"
+  },
+  "user": "digitalhubdev"
+}
