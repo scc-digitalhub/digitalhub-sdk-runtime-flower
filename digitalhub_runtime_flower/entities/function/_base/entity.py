@@ -9,7 +9,7 @@ import typing
 from digitalhub.entities.function._base.entity import Function
 
 if typing.TYPE_CHECKING:
-    from digitalhub.entities._base.entity.metadata import Metadata
+    pass
 
 from digitalhub_runtime_flower.entities.function._base.spec import FunctionSpecFlower
 from digitalhub_runtime_flower.entities.function._base.status import FunctionStatusFlower
@@ -20,18 +20,8 @@ class FunctionFlower(Function):
     FunctionFlower class.
     """
 
-    def __init__(
-        self,
-        project: str,
-        name: str,
-        uuid: str,
-        kind: str,
-        metadata: Metadata,
-        spec: FunctionSpecFlower,
-        status: FunctionStatusFlower,
-        user: str | None = None,
-    ) -> None:
-        super().__init__(project, name, uuid, kind, metadata, spec, status, user)
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
 
         self.spec: FunctionSpecFlower
         self.status: FunctionStatusFlower

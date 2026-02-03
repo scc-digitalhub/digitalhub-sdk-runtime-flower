@@ -9,7 +9,7 @@ import typing
 from digitalhub.entities.task._base.entity import Task
 
 if typing.TYPE_CHECKING:
-    from digitalhub.entities._base.entity.metadata import Metadata
+    from digitalhub.entities._base.metadata.entity import Metadata
 
 from digitalhub_runtime_flower.entities.task.flower_server_build.spec import TaskSpecFlowerServerBuild
 from digitalhub_runtime_flower.entities.task.flower_server_build.status import TaskStatusFlowerServerBuild
