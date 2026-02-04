@@ -9,7 +9,7 @@ import typing
 from digitalhub.entities.task._base.entity import Task
 
 if typing.TYPE_CHECKING:
-    from digitalhub.entities._base.metadata.entity import Metadata
+    pass
 
 from digitalhub_runtime_flower.entities.task.flower_server_build.spec import TaskSpecFlowerServerBuild
 from digitalhub_runtime_flower.entities.task.flower_server_build.status import TaskStatusFlowerServerBuild
@@ -20,17 +20,8 @@ class TaskFlowerServerBuild(Task):
     TaskFlowerServerBuild class.
     """
 
-    def __init__(
-        self,
-        project: str,
-        uuid: str,
-        kind: str,
-        metadata: Metadata,
-        spec: TaskSpecFlowerServerBuild,
-        status: TaskStatusFlowerServerBuild,
-        user: str | None = None,
-    ) -> None:
-        super().__init__(project, uuid, kind, metadata, spec, status, user)
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
 
         self.spec: TaskSpecFlowerServerBuild
         self.status: TaskStatusFlowerServerBuild

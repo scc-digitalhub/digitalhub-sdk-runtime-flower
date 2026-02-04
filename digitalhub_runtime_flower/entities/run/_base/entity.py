@@ -9,7 +9,6 @@ import typing
 from digitalhub.entities.run._base.entity import Run
 
 if typing.TYPE_CHECKING:
-    from digitalhub.entities._base.metadata.entity import Metadata
 
     from digitalhub_runtime_flower.entities.run._base.spec import RunSpecFlowerRun
     from digitalhub_runtime_flower.entities.run._base.status import RunStatusFlowerRun
@@ -20,17 +19,8 @@ class RunFlowerRun(Run):
     RunFlowerRun class.
     """
 
-    def __init__(
-        self,
-        project: str,
-        uuid: str,
-        kind: str,
-        metadata: Metadata,
-        spec: RunSpecFlowerRun,
-        status: RunStatusFlowerRun,
-        user: str | None = None,
-    ) -> None:
-        super().__init__(project, uuid, kind, metadata, spec, status, user)
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
 
         self.spec: RunSpecFlowerRun
         self.status: RunStatusFlowerRun
