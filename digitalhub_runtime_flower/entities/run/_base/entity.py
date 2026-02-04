@@ -9,7 +9,6 @@ import typing
 from digitalhub.entities.run._base.entity import Run
 
 if typing.TYPE_CHECKING:
-
     from digitalhub_runtime_flower.entities.run._base.spec import RunSpecFlowerRun
     from digitalhub_runtime_flower.entities.run._base.status import RunStatusFlowerRun
 
