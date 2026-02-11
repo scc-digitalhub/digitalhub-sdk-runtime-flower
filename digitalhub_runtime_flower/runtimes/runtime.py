@@ -26,30 +26,6 @@ class RuntimeFlower(Runtime):
     Runtime Flower class.
     """
 
-    def build(self, function: dict, task: dict, run: dict) -> dict:
-        """
-        Build run spec.
-
-        Parameters
-        ----------
-        function : dict
-            The function.
-        task : dict
-            The task.
-        run : dict
-            The run.
-
-        Returns
-        -------
-        dict
-            The run spec.
-        """
-        return {
-            **function.get("spec", {}),
-            **task.get("spec", {}),
-            **run.get("spec", {}),
-        }
-
     def run(self, run: dict) -> dict:
         """
         Run function.
@@ -59,7 +35,8 @@ class RuntimeFlower(Runtime):
         dict
             Status of the executed run.
         """
-        raise NotImplementedError("Local execution not implemented for Flower runtime.")
+        task_kind = run["spec"]["task"].split(":")[0]
+        raise NotImplementedError(f"Local execution not implemented for task kind: {task_kind}")
 
 
 class RuntimeFlowerApp(Runtime):
@@ -74,30 +51,6 @@ class RuntimeFlowerApp(Runtime):
         self.runtime_dir.mkdir(parents=True, exist_ok=True)
 
         self._git_source: bool = False
-
-    def build(self, function: dict, task: dict, run: dict) -> dict:
-        """
-        Build run spec.
-
-        Parameters
-        ----------
-        function : dict
-            The function.
-        task : dict
-            The task.
-        run : dict
-            The run.
-
-        Returns
-        -------
-        dict
-            The run spec.
-        """
-        return {
-            **function.get("spec", {}),
-            **task.get("spec", {}),
-            **run.get("spec", {}),
-        }
 
     def run(self, run: dict) -> dict:
         """

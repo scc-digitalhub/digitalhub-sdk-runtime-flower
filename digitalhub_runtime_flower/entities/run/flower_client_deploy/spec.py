@@ -15,7 +15,6 @@ class RunSpecFlowerClientDeploy(RunSpecFlowerRun):
     def __init__(
         self,
         task: str,
-        local_execution: bool = False,
         function: str | None = None,
         workflow: str | None = None,
         volumes: list[dict] | None = None,
@@ -36,7 +35,6 @@ class RunSpecFlowerClientDeploy(RunSpecFlowerRun):
     ) -> None:
         super().__init__(
             task,
-            local_execution,
             function,
             workflow,
             volumes,

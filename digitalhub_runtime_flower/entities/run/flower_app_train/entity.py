@@ -25,3 +25,14 @@ class RunFlowerAppTrain(Run):
 
         self.spec: RunSpecFlowerAppTrain
         self.status: RunStatusFlowerAppTrain
+
+    def local_execution(self) -> bool:
+        """
+        Check if run has local execution.
+
+        Returns
+        -------
+        bool
+            True if run has local execution, False otherwise.
+        """
+        return self.spec.local_execution

@@ -15,7 +15,6 @@ class RunSpecFlowerAppTrain(RunSpecFlowerRun):
     def __init__(
         self,
         task: str,
-        local_execution: bool = False,
         function: str | None = None,
         workflow: str | None = None,
         volumes: list[dict] | None = None,
@@ -32,11 +31,11 @@ class RunSpecFlowerAppTrain(RunSpecFlowerRun):
         federation: str | None = None,
         superlink: str | None = None,
         root_certificates: str | None = None,
+        local_execution: bool = False,
         **kwargs,
     ) -> None:
         super().__init__(
             task,
-            local_execution,
             function,
             workflow,
             volumes,
@@ -55,6 +54,7 @@ class RunSpecFlowerAppTrain(RunSpecFlowerRun):
         self.federation = federation
         self.superlink = superlink
         self.root_certificates = root_certificates
+        self.local_execution = local_execution
 
 
 class RunValidatorFlowerAppTrain(RunValidatorFlowerRun):
@@ -83,3 +83,6 @@ class RunValidatorFlowerAppTrain(RunValidatorFlowerRun):
 
     root_certificates: str | None = None
     """Root certificates."""
+
+    local_execution: bool = False
+    """Whether to execute the run locally instead of in the cluster."""
