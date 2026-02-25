@@ -35,19 +35,14 @@ entity_builders = (
 try:
     from digitalhub_runtime_flower.runtimes.builder import RuntimeFlowerAppBuilder, RuntimeFlowerBuilder
 
+    kinds = [e.value for e in EntityKinds]
+    flower_app = [
+        EntityKinds.FUNCTION_FLOWER_APP.value,
+        EntityKinds.TASK_FLOWER_APP_TRAIN.value,
+        EntityKinds.RUN_FLOWER_APP_TRAIN.value,
+    ]
     runtime_builders = tuple(
-        (
-            e.value,
-            RuntimeFlowerAppBuilder
-            if e
-            in (
-                EntityKinds.FUNCTION_FLOWER_APP,
-                EntityKinds.TASK_FLOWER_APP_TRAIN,
-                EntityKinds.RUN_FLOWER_APP_TRAIN,
-            )
-            else RuntimeFlowerBuilder,
-        )
-        for e in EntityKinds
+        (e.value, RuntimeFlowerAppBuilder if e in flower_app else RuntimeFlowerBuilder) for e in kinds
     )
 
 
