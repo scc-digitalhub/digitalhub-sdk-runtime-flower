@@ -41,9 +41,7 @@ try:
         EntityKinds.TASK_FLOWER_APP_TRAIN.value,
         EntityKinds.RUN_FLOWER_APP_TRAIN.value,
     ]
-    runtime_builders = tuple(
-        (e.value, RuntimeFlowerAppBuilder if e in flower_app else RuntimeFlowerBuilder) for e in kinds
-    )
+    runtime_builders = tuple((e, RuntimeFlowerAppBuilder if e in flower_app else RuntimeFlowerBuilder) for e in kinds)
 
 
 except ImportError:
