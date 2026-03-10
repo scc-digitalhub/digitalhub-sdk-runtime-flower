@@ -44,5 +44,8 @@ try:
     runtime_builders = tuple((e, RuntimeFlowerAppBuilder if e in flower_app else RuntimeFlowerBuilder) for e in kinds)
 
 
-except ImportError:
+except ImportError as e:
+    from digitalhub.utils.logger.logger import get_logger
+    logger = get_logger(__name__)
+    logger.debug(f"Error importing runtime builders: {e}")
     runtime_builders = tuple()

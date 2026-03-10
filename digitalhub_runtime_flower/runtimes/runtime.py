@@ -8,7 +8,7 @@ from typing import Callable
 
 from digitalhub.context.api import get_context
 from digitalhub.runtimes._base import Runtime
-from digitalhub.utils.logger import LOGGER
+from digitalhub.utils.logger.logger import get_logger
 
 from digitalhub_runtime_flower.entities._commons.enums import Actions
 from digitalhub_runtime_flower.utils.configuration import (
@@ -20,23 +20,13 @@ from digitalhub_runtime_flower.utils.configuration import (
 from digitalhub_runtime_flower.utils.functions import run_simulation
 from digitalhub_runtime_flower.utils.outputs import build_status
 
+logger = get_logger(__file__)
+
 
 class RuntimeFlower(Runtime):
     """
     Runtime Flower class.
     """
-
-    def run(self, run: dict) -> dict:
-        """
-        Run function.
-
-        Returns
-        -------
-        dict
-            Status of the executed run.
-        """
-        task_kind = run["spec"]["task"].split(":")[0]
-        raise NotImplementedError(f"Local execution not implemented for task kind: {task_kind}")
 
 
 class RuntimeFlowerApp(Runtime):
@@ -66,23 +56,23 @@ class RuntimeFlowerApp(Runtime):
         dict
             Status of the executed run.
         """
-        LOGGER.info("Validating task.")
+        logger.info("Validating task.")
         action = self._validate_task(run)
         executable = self._get_executable(action)
 
-        LOGGER.info("Starting task.")
+        logger.info("Starting task.")
         spec = run.get("spec")
 
-        LOGGER.info("Configure execution.")
+        logger.info("Configure execution.")
         run_args = self._configure_execution(spec["fab_source"], spec.get("parameters"))
 
-        LOGGER.info("Executing run.")
+        logger.info("Executing run.")
         self._execute(executable, self.runtime_dir, run_args)
 
-        LOGGER.info("Building status.")
+        logger.info("Building status.")
         status = build_status(run["id"])
 
-        LOGGER.info("Task completed, returning run status.")
+        logger.info("Task completed, returning run status.")
         return status
 
     def _get_executable(self, action: Actions) -> Callable:
