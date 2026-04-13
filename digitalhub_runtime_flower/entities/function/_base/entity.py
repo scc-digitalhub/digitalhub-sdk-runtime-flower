@@ -4,13 +4,9 @@
 
 from __future__ import annotations
 
-import typing
-
 from digitalhub.entities.function._base.entity import Function
 
-if typing.TYPE_CHECKING:
-    pass
-
+from digitalhub_runtime_flower.entities._commons.requirement_parser.parser import RequirementParser
 from digitalhub_runtime_flower.entities.function._base.spec import FunctionSpecFlower
 from digitalhub_runtime_flower.entities.function._base.status import FunctionStatusFlower
 
@@ -25,3 +21,11 @@ class FunctionFlower(Function):
 
         self.spec: FunctionSpecFlower
         self.status: FunctionStatusFlower
+
+    def _post_create_hook_before_save(self) -> None:
+        """
+        Hook method called after the creation of the entity but before saving
+        in Core.
+        Can be overridden in subclasses to implement custom behavior.
+        """
+        self.spec.requirements = RequirementParser().parse(self.spec.requirements)

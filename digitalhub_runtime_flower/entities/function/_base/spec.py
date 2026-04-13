@@ -16,7 +16,7 @@ class FunctionSpecFlower(FunctionSpec):
         self,
         image: str | None = None,
         base_image: str | None = None,
-        requirements: list[str] | None = None,
+        requirements: list | None = None,
         **kwargs,
     ) -> None:
         super().__init__(**kwargs)
@@ -32,4 +32,4 @@ class FunctionValidatorFlower(FunctionValidator):
 
     image: str | None = None
     base_image: str | None = None
-    requirements: list[str] | None = None
+    requirements: list[str] | str | None = None
