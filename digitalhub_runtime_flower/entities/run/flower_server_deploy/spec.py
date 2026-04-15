@@ -30,14 +30,14 @@ class RunSpecFlowerServerDeploy(RunSpecFlowerRun):
         **kwargs,
     ) -> None:
         super().__init__(
-            task,
-            function,
-            workflow,
-            volumes,
-            resources,
-            envs,
-            secrets,
-            profile,
+            task=task,
+            function=function,
+            workflow=workflow,
+            volumes=volumes,
+            resources=resources,
+            envs=envs,
+            secrets=secrets,
+            profile=profile,
             **kwargs,
         )
         self.image = image
