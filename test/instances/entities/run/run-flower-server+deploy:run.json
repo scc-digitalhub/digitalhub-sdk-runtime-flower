@@ -41,7 +41,7 @@
     "requirements": [
       "flwr>=1.10.0"
     ],
-    "auth_public_keys": "flower-server-auth-keys",
+    "auth_public_keys": ["flower-server-auth-keys"],
     "insecure": false
   },
   "status": {

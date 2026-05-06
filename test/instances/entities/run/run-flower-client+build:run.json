@@ -31,7 +31,11 @@
       "pip install flwr"
     ],
     "isolation": "docker",
-    "node_config": "default",
+    "node_config": {
+      "node_selector": {
+        "kubernetes.io/arch": "amd64"
+      }
+    },
     "private_key_secret": "flower-client-private-key",
     "public_key_secret": "flower-client-public-key",
     "root_certificates": "flower-root-certificates",
