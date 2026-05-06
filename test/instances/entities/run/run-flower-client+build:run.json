@@ -29,7 +29,13 @@
     "instructions": [
       "pip install --upgrade pip",
       "pip install flwr"
-    ]
+    ],
+    "isolation": "docker",
+    "node_config": "default",
+    "private_key_secret": "flower-client-private-key",
+    "public_key_secret": "flower-client-public-key",
+    "root_certificates": "flower-root-certificates",
+    "superlink": "flower-superlink"
   },
   "status": {
     "state": "COMPLETED",

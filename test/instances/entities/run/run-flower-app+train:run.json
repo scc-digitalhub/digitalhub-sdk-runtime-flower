@@ -55,7 +55,8 @@
     },
     "federation": "demo-federation",
     "superlink": "https://superlink.example.com",
-    "local_execution": false
+    "local_execution": false,
+    "root_certificates": "path/to/root/certificates"
   },
   "status": {
     "state": "COMPLETED",
