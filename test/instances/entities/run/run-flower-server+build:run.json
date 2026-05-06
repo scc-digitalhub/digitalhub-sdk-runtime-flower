@@ -15,14 +15,13 @@
   "spec": {
     "task": "flower-server+build://demo-flower/e5f6a7b8-c9d0-1234-ef12-345678901234",
     "function": "flower-server://demo-flower/func-server:b2c3d4e5-f6a7-8901-bcde-f12345678901",
-    "instructions": ["apt-get update", "apt-get install -y git"],
-    "image": "flower-server:latest",
-    "base_image": "python:3.11-slim",
-    "requirements": ["flwr>=1.10.0"],
-    "auth_public_keys": null,
-    "insecure": null,
-    "profile": "default",
-    "local_execution": false,
+    "volumes": [
+      {
+        "volume_type": "empty_dir",
+        "name": "volume1",
+        "mount_path": "/workspace"
+      }
+    ],
     "resources": {
       "cpu": "2",
       "mem": "2Gi"
@@ -33,13 +32,18 @@
         "value": "production"
       }
     ],
-    "secrets": ["docker-registry"],
-    "volumes": [
-      {
-        "name": "volume1",
-        "volume_type": "empty_dir",
-        "mount_path": "/workspace"
-      }
+    "secrets": [
+      "docker-registry"
+    ],
+    "profile": "default",
+    "instructions": [
+      "apt-get update",
+      "apt-get install -y git"
+    ],
+    "image": "flower-server:latest",
+    "base_image": "python:3.11-slim",
+    "requirements": [
+      "flwr>=1.10.0"
     ]
   },
   "status": {

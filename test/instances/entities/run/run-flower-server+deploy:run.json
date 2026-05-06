@@ -15,12 +15,13 @@
   "spec": {
     "task": "flower-server+deploy://demo-flower/f6a7b8c9-d0e1-2345-f123-456789012345",
     "function": "flower-server://demo-flower/func-server:b2c3d4e5-f6a7-8901-bcde-f12345678901",
-    "image": "flower-server:latest",
-    "base_image": "python:3.11-slim",
-    "requirements": ["flwr>=1.10.0"],
-    "auth_public_keys": null,
-    "profile": "default",
-    "local_execution": false,
+    "volumes": [
+      {
+        "volume_type": "persistent_volume_claim",
+        "name": "volume1",
+        "mount_path": "/data"
+      }
+    ],
     "resources": {
       "cpu": "1",
       "mem": "1Gi"
@@ -31,14 +32,16 @@
         "value": "production"
       }
     ],
-    "secrets": ["flower-secret"],
-    "volumes": [
-      {
-        "name": "volume1",
-        "volume_type": "persistent_volume_claim",
-        "mount_path": "/data"
-      }
-    ]
+    "secrets": [
+      "flower-secret"
+    ],
+    "profile": "default",
+    "image": "flower-server:latest",
+    "base_image": "python:3.11-slim",
+    "requirements": [
+      "flwr>=1.10.0"
+    ],
+    "insecure": false
   },
   "status": {
     "state": "RUNNING",

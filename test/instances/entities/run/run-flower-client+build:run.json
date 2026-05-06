@@ -15,22 +15,21 @@
   "spec": {
     "task": "flower-client+build://demo-flower/a7b8c9d0-e1f2-3456-1234-567890123456",
     "function": "flower-client://demo-flower/func-client:c3d4e5f6-a7b8-9012-cdef-123456789012",
-    "instructions": ["pip install --upgrade pip", "pip install flwr"],
-    "image": "flower-client:latest",
-    "base_image": "python:3.11-slim",
-    "requirements": ["flwr>=1.10.0", "numpy>=1.24.0"],
-    "isolation": null,
-    "node_config": null,
-    "private_key_secret": null,
-    "public_key_secret": null,
-    "root_certificates": null,
-    "superlink": null,
-    "profile": "default",
-    "local_execution": false,
     "resources": {
       "cpu": "1",
       "mem": "1Gi"
-    }
+    },
+    "profile": "default",
+    "image": "flower-client:latest",
+    "base_image": "python:3.11-slim",
+    "requirements": [
+      "flwr>=1.10.0",
+      "numpy>=1.24.0"
+    ],
+    "instructions": [
+      "pip install --upgrade pip",
+      "pip install flwr"
+    ]
   },
   "status": {
     "state": "COMPLETED",
