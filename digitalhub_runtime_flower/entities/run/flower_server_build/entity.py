@@ -25,3 +25,15 @@ class RunFlowerServerBuild(Run):
 
         self.spec: RunSpecFlowerServerBuild
         self.status: RunStatusFlowerServerBuild
+
+    @property
+    def image(self) -> str | None:
+        """
+        Get run's image.
+
+        Returns
+        -------
+        str | None
+            The image.
+        """
+        return self.status.outputs.get("image")
