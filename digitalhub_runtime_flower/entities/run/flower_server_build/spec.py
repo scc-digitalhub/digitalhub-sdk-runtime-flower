@@ -26,6 +26,8 @@ class RunSpecFlowerServerBuild(RunSpecFlowerRun):
         image: str | None = None,
         base_image: str | None = None,
         requirements: list[str] | None = None,
+        auth_public_keys: list[str] | None = None,
+        insecure: bool = False,
         **kwargs,
     ) -> None:
         super().__init__(
@@ -43,6 +45,8 @@ class RunSpecFlowerServerBuild(RunSpecFlowerRun):
         self.image = image
         self.base_image = base_image
         self.requirements = requirements
+        self.auth_public_keys = auth_public_keys
+        self.insecure = insecure
 
 
 class RunValidatorFlowerServerBuild(RunValidatorFlowerRun):
@@ -57,3 +61,10 @@ class RunValidatorFlowerServerBuild(RunValidatorFlowerRun):
 
     # Task parameters
     instructions: list[str] | None = None
+
+    # Run parameters
+    auth_public_keys: list[str] | None = None
+    """List of public keys for authentication."""
+
+    insecure: bool = False
+    """Flag to allow insecure connections."""
