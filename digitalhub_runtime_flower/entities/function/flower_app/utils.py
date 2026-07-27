@@ -112,13 +112,11 @@ def _check_params(
         if client_app is None or server_app is None:
             raise EntityError("Either git_source or both client_app and server_app must be provided.")
 
-        if client_code is None and client_src is None and client_base64 is None:
-            if not from_fab_source:
-                raise EntityError("Either client_code or client_src must be provided.")
+        if client_code is None and client_src is None and client_base64 is None and not from_fab_source:
+            raise EntityError("Either client_code or client_src must be provided.")
 
-        if server_code is None and server_src is None and server_base64 is None:
-            if not from_fab_source:
-                raise EntityError("Either server_code or server_src must be provided.")
+        if server_code is None and server_src is None and server_base64 is None and not from_fab_source:
+            raise EntityError("Either server_code or server_src must be provided.")
 
     _valid_src(client_src, "client_src")
     _valid_src(server_src, "server_src")
