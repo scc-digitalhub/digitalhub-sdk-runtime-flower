@@ -4,12 +4,7 @@
 
 from __future__ import annotations
 
-import typing
-
 from digitalhub.entities.task._base.entity import Task
-
-if typing.TYPE_CHECKING:
-    pass
 
 from digitalhub_runtime_flower.entities.task.flower_client_deploy.spec import TaskSpecFlowerClientDeploy
 from digitalhub_runtime_flower.entities.task.flower_client_deploy.status import TaskStatusFlowerClientDeploy

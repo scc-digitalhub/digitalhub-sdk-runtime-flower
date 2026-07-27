@@ -4,12 +4,7 @@
 
 from __future__ import annotations
 
-import typing
-
 from digitalhub.entities.run._base.entity import Run
-
-if typing.TYPE_CHECKING:
-    pass
 
 from digitalhub_runtime_flower.entities.run.flower_server_build.spec import RunSpecFlowerServerBuild
 from digitalhub_runtime_flower.entities.run.flower_server_build.status import RunStatusFlowerServerBuild
