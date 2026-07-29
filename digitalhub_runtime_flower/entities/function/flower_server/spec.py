@@ -12,20 +12,6 @@ class FunctionSpecFlowerServer(FunctionSpecFlower):
     FunctionSpecFlowerServer specifications.
     """
 
-    def __init__(
-        self,
-        image: str | None = None,
-        base_image: str | None = None,
-        requirements: list[str] | None = None,
-        **kwargs,
-    ) -> None:
-        super().__init__(
-            image=image,
-            base_image=base_image,
-            requirements=requirements,
-            **kwargs,
-        )
-
 
 class FunctionValidatorFlowerServer(FunctionValidatorFlower):
     """
