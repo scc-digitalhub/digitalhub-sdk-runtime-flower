@@ -4,12 +4,12 @@
 
 from __future__ import annotations
 
-from digitalhub_runtime_flower.entities.function._base.entity import FunctionFlower
+from digitalhub_runtime_flower.entities.function._base.entity import FunctionFlowerBuild
 from digitalhub_runtime_flower.entities.function.flower_server.spec import FunctionSpecFlowerServer
 from digitalhub_runtime_flower.entities.function.flower_server.status import FunctionStatusFlowerServer
 
 
-class FunctionFlowerServer(FunctionFlower):
+class FunctionFlowerServer(FunctionFlowerBuild):
     """
     FunctionFlowerServer class.
     """
