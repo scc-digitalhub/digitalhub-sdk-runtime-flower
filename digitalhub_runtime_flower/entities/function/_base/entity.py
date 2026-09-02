@@ -59,7 +59,7 @@ class FunctionFlowerBuild(FunctionFlower):
         wait: bool = False,
         log_info: bool = True,
         extensions: list[dict] | None = None,
-        auto_build: bool = True,
+        auto_build: bool = False,
         **kwargs,
     ):
         """Run the function, building it when no image is available."""
