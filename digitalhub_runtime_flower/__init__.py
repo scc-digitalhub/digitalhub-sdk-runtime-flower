@@ -15,7 +15,7 @@ try:
         EntityKinds.TASK_FLOWER_APP_TRAIN.value,
         EntityKinds.RUN_FLOWER_APP_TRAIN.value,
     ]
-    runtime_builders = tuple((e, RuntimeFlowerAppBuilder if e in flower_app else RuntimeFlowerBuilder) for e in kinds)
+    runtime_builders = ((e, RuntimeFlowerAppBuilder if e in flower_app else RuntimeFlowerBuilder) for e in kinds)
 
 
 except ImportError as e:
@@ -23,4 +23,4 @@ except ImportError as e:
 
     logger = get_logger(__name__)
     logger.debug(f"Error importing runtime builders: {e}")
-    runtime_builders = tuple()
+    runtime_builders = ()
