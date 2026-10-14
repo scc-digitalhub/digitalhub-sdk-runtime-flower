@@ -12,7 +12,7 @@ Explore the full documentation at the [link](https://scc-digitalhub.github.io/sd
 To install the Digitalhub SDK Runtime Flower, you can use pip:
 
 ```bash
-pip install digitalhub-sdk-runtime-flower
+pip install digitalhub-runtime-flower
 ```
 
 ## Development
