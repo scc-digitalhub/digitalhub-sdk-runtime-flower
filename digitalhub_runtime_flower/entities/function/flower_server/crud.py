@@ -26,7 +26,23 @@ def new_function_flower_server(
     labels: list[str] | None = None,
     embedded: bool = False,
 ) -> FunctionFlowerServer:
-    """Create a Flower server function entity."""
+    """
+    Create a Flower server function entity.
+
+    Examples
+    --------
+    Create a server function using a prebuilt image:
+
+    ```python
+    import digitalhub as dh
+
+    function = dh.new_function_flower_server(
+        project="my-project",
+        name="flower-server",
+        image="ghcr.io/example/flower-server:latest",
+    )
+    ```
+    """
     return new_function(
         project=project,
         name=name,

@@ -26,7 +26,23 @@ def new_function_flower_client(
     labels: list[str] | None = None,
     embedded: bool = False,
 ) -> FunctionFlowerClient:
-    """Create a Flower client function entity."""
+    """
+    Create a Flower client function entity.
+
+    Examples
+    --------
+    Create a client function using a prebuilt image:
+
+    ```python
+    import digitalhub as dh
+
+    function = dh.new_function_flower_client(
+        project="my-project",
+        name="flower-client",
+        image="ghcr.io/example/flower-client:latest",
+    )
+    ```
+    """
     return new_function(
         project=project,
         name=name,

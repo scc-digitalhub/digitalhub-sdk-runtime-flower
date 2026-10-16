@@ -34,7 +34,24 @@ def new_function_flower_app(
     labels: list[str] | None = None,
     embedded: bool = False,
 ) -> FunctionFlowerApp:
-    """Create a Flower application function entity."""
+    """
+    Create a Flower application function entity.
+
+    Examples
+    --------
+    Create an app from local client and server source files:
+
+    ```python
+    import digitalhub as dh
+
+    function = dh.new_function_flower_app(
+        project="my-project",
+        name="flower-app",
+        client_src="./client.py",
+        server_src="./server.py",
+    )
+    ```
+    """
     if client_code is not None and client_src is not None:
         raise ValueError("Only one of 'client_code' or 'client_src' can be provided.")
     if server_code is not None and server_src is not None:
