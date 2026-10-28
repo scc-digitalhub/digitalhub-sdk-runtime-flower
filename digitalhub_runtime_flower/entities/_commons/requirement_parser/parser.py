@@ -5,10 +5,6 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from pip._internal.operations import freeze
-
-from digitalhub_runtime_flower.entities._commons.requirement_parser.factory import RequirementParserFactory
-
 
 class RequirementParser:
     """
@@ -28,6 +24,8 @@ class RequirementParser:
             return
         elif isinstance(requirements, str):
             self._validate_path(requirements)
+            from digitalhub_runtime_flower.entities._commons.requirement_parser.factory import RequirementParserFactory
+
             parser = RequirementParserFactory().get_parser(requirements)
             parsed = parser.parse_requirements(requirements)
             return self.read_installed_packages(parsed)
@@ -62,6 +60,8 @@ class RequirementParser:
         list[str]
             List of installed packages in pip freeze format (e.g., ['numpy==1.24.0', 'pandas==2.0.0']).
         """
+        from pip._internal.operations import freeze
+
         separators = ["==", ">=", "<=", ">", "<", "~=", "!="]
 
         # Build a mapping of normalized package names to their installed versions
