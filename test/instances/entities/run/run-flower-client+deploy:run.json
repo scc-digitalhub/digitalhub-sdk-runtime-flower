@@ -25,6 +25,8 @@
         "value": "test"
       }
     ],
+    "secrets": [],
+    "volumes": [],
     "profile": "default",
     "image": "flower-client:latest",
     "base_image": "python:3.11-slim",

@@ -19,6 +19,9 @@
       "cpu": "1",
       "mem": "1Gi"
     },
+    "envs": [],
+    "secrets": [],
+    "volumes": [],
     "profile": "default",
     "image": "flower-client:latest",
     "base_image": "python:3.11-slim",
