@@ -6,6 +6,4 @@ from __future__ import annotations
 
 from digitalhub.entities.task._base.spec import TaskSpecFunction
 
-
-class TaskSpecFlowerClientDeploy(TaskSpecFunction):
-    """Specification for a Flower client deployment task."""
+TaskSpecFlowerClientDeploy = TaskSpecFunction

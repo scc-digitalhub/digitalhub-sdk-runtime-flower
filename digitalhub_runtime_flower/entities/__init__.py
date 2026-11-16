@@ -21,31 +21,43 @@ from digitalhub_runtime_flower.entities.task.flower_client_deploy.builder import
 from digitalhub_runtime_flower.entities.task.flower_server_build.builder import TaskFlowerServerBuildBuilder
 from digitalhub_runtime_flower.entities.task.flower_server_deploy.builder import TaskFlowerServerDeployBuilder
 
+try:
+    from digitalhub_runtime_flower.runtimes.builder import RuntimeFlowerAppBuilder, RuntimeFlowerBuilder
+except ImportError as e:
+    from digitalhub.utils.logger.logger import get_logger
+
+    get_logger(__name__).debug(f"Error importing runtime builders: {e}")
+    RuntimeFlowerAppBuilder = None
+    RuntimeFlowerBuilder = None
+
 function_flower_app_plugin = EntityPlugin(
     builder=FunctionFlowerAppBuilder,
     shortcuts=(CrudPlugin(new_function_flower_app),),
+    runtime_builder=RuntimeFlowerAppBuilder,
 )
 function_flower_server_plugin = EntityPlugin(
     builder=FunctionFlowerServerBuilder,
     shortcuts=(CrudPlugin(new_function_flower_server),),
+    runtime_builder=RuntimeFlowerBuilder,
 )
 function_flower_client_plugin = EntityPlugin(
     builder=FunctionFlowerClientBuilder,
     shortcuts=(CrudPlugin(new_function_flower_client),),
+    runtime_builder=RuntimeFlowerBuilder,
 )
 
 entity_plugins = (
     function_flower_app_plugin,
     function_flower_server_plugin,
     function_flower_client_plugin,
-    EntityPlugin(builder=TaskFlowerAppTrainBuilder),
-    EntityPlugin(builder=TaskFlowerServerBuildBuilder),
-    EntityPlugin(builder=TaskFlowerServerDeployBuilder),
-    EntityPlugin(builder=TaskFlowerClientBuildBuilder),
-    EntityPlugin(builder=TaskFlowerClientDeployBuilder),
-    EntityPlugin(builder=RunFlowerAppTrainBuilder),
-    EntityPlugin(builder=RunFlowerServerBuildBuilder),
-    EntityPlugin(builder=RunFlowerServerDeployBuilder),
-    EntityPlugin(builder=RunFlowerClientBuildBuilder),
-    EntityPlugin(builder=RunFlowerClientDeployBuilder),
+    EntityPlugin(builder=TaskFlowerAppTrainBuilder, runtime_builder=RuntimeFlowerAppBuilder),
+    EntityPlugin(builder=TaskFlowerServerBuildBuilder, runtime_builder=RuntimeFlowerBuilder),
+    EntityPlugin(builder=TaskFlowerServerDeployBuilder, runtime_builder=RuntimeFlowerBuilder),
+    EntityPlugin(builder=TaskFlowerClientBuildBuilder, runtime_builder=RuntimeFlowerBuilder),
+    EntityPlugin(builder=TaskFlowerClientDeployBuilder, runtime_builder=RuntimeFlowerBuilder),
+    EntityPlugin(builder=RunFlowerAppTrainBuilder, runtime_builder=RuntimeFlowerAppBuilder),
+    EntityPlugin(builder=RunFlowerServerBuildBuilder, runtime_builder=RuntimeFlowerBuilder),
+    EntityPlugin(builder=RunFlowerServerDeployBuilder, runtime_builder=RuntimeFlowerBuilder),
+    EntityPlugin(builder=RunFlowerClientBuildBuilder, runtime_builder=RuntimeFlowerBuilder),
+    EntityPlugin(builder=RunFlowerClientDeployBuilder, runtime_builder=RuntimeFlowerBuilder),
 )
