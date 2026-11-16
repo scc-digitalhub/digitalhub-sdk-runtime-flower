@@ -36,10 +36,6 @@
       "docker-registry"
     ],
     "profile": "default",
-    "instructions": [
-      "apt-get update",
-      "apt-get install -y git"
-    ],
     "image": "flower-server:latest",
     "base_image": "python:3.11-slim",
     "requirements": [

@@ -4,16 +4,12 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.run._base.spec import RunSpec, RunValidator
+from digitalhub.entities.run._base.spec import RunSpec
 
 
 class RunSpecFlowerRun(RunSpec):
-    """
-    RunSpecFlowerRun specifications.
-    """
+    """Specification shared by Flower runs."""
 
-
-class RunValidatorFlowerRun(RunValidator):
-    """
-    RunValidatorFlowerRun validator.
-    """
+    image: str | None = None
+    base_image: str | None = None
+    requirements: list[str] | None = None

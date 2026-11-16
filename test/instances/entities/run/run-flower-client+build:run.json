@@ -29,10 +29,6 @@
       "flwr>=1.10.0",
       "numpy>=1.24.0"
     ],
-    "instructions": [
-      "pip install --upgrade pip",
-      "pip install flwr"
-    ],
     "isolation": "subprocess",
     "node_config": {
       "node_selector": {

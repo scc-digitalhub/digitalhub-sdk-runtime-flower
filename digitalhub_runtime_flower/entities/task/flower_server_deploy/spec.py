@@ -3,16 +3,8 @@
 # SPDX-License-Identifier: Apache-2.0
 from __future__ import annotations
 
-from digitalhub.entities.task._base.spec import TaskSpecFunction, TaskValidatorFunction
+from digitalhub.entities.task._base.spec import TaskSpecFunction
 
 
 class TaskSpecFlowerServerDeploy(TaskSpecFunction):
-    """
-    TaskSpecFlowerServerDeploy specifications.
-    """
-
-
-class TaskValidatorFlowerServerDeploy(TaskValidatorFunction):
-    """
-    TaskValidatorFlowerServerDeploy validator.
-    """
+    """Specification for a Flower server deployment task."""

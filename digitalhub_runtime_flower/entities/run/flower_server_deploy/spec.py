@@ -4,61 +4,14 @@
 
 from __future__ import annotations
 
-from digitalhub_runtime_flower.entities.run._base.spec import RunSpecFlowerRun, RunValidatorFlowerRun
+from digitalhub_runtime_flower.entities.run._base.spec import RunSpecFlowerRun
 
 
 class RunSpecFlowerServerDeploy(RunSpecFlowerRun):
-    """
-    RunSpecFlowerServerDeploy specifications.
-    """
+    """Specification for a Flower server deployment run."""
 
-    def __init__(
-        self,
-        task: str,
-        function: str | None = None,
-        workflow: str | None = None,
-        volumes: list[dict] | None = None,
-        resources: dict | None = None,
-        envs: list[dict] | None = None,
-        secrets: list[str] | None = None,
-        profile: str | None = None,
-        image: str | None = None,
-        base_image: str | None = None,
-        requirements: list[str] | None = None,
-        auth_public_keys: list[str] | None = None,
-        insecure: bool = False,
-        **kwargs,
-    ) -> None:
-        super().__init__(
-            task=task,
-            function=function,
-            workflow=workflow,
-            volumes=volumes,
-            resources=resources,
-            envs=envs,
-            secrets=secrets,
-            profile=profile,
-            **kwargs,
-        )
-        self.image = image
-        self.base_image = base_image
-        self.requirements = requirements
-        self.auth_public_keys = auth_public_keys
-        self.insecure = insecure
-
-
-class RunValidatorFlowerServerDeploy(RunValidatorFlowerRun):
-    """
-    RunValidatorFlowerServerDeploy validator.
-    """
-
-    # Function parameters
-    image: str | None = None
-    base_image: str | None = None
-    requirements: list[str] | None = None
-
-    # Run parameters
     auth_public_keys: list[str] | None = None
     """Authentication public keys."""
+
     insecure: bool = False
     """Disable TLS verification."""

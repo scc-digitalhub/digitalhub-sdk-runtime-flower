@@ -8,10 +8,7 @@ from digitalhub_runtime_flower.entities._base.runtime_entity.builder import Runt
 from digitalhub_runtime_flower.entities._commons.enums import EntityKinds
 from digitalhub_runtime_flower.entities.function._base.builder import FunctionFlowerBuilder
 from digitalhub_runtime_flower.entities.function.flower_server.entity import FunctionFlowerServer
-from digitalhub_runtime_flower.entities.function.flower_server.spec import (
-    FunctionSpecFlowerServer,
-    FunctionValidatorFlowerServer,
-)
+from digitalhub_runtime_flower.entities.function.flower_server.spec import FunctionSpecFlowerServer
 from digitalhub_runtime_flower.entities.function.flower_server.status import FunctionStatusFlowerServer
 
 
@@ -22,6 +19,5 @@ class FunctionFlowerServerBuilder(FunctionFlowerBuilder, RuntimeEntityBuilderFlo
 
     ENTITY_CLASS = FunctionFlowerServer
     ENTITY_SPEC_CLASS = FunctionSpecFlowerServer
-    ENTITY_SPEC_VALIDATOR = FunctionValidatorFlowerServer
     ENTITY_STATUS_CLASS = FunctionStatusFlowerServer
     ENTITY_KIND = EntityKinds.FUNCTION_FLOWER_SERVER.value

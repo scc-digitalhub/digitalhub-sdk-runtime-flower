@@ -4,40 +4,10 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.task._base.spec import TaskSpecFunction, TaskValidatorFunction
+from digitalhub.entities.task._base.spec import TaskSpecFunction
 
 
 class TaskSpecFlowerAppTrain(TaskSpecFunction):
-    """
-    TaskSpecFlowerAppTrain specifications.
-    """
-
-    def __init__(
-        self,
-        function: str,
-        schedule: str | None = None,
-        volumes: list[dict] | None = None,
-        resources: dict | None = None,
-        envs: list[dict] | None = None,
-        secrets: list[str] | None = None,
-        profile: str | None = None,
-        **kwargs,
-    ) -> None:
-        super().__init__(
-            function=function,
-            volumes=volumes,
-            resources=resources,
-            envs=envs,
-            secrets=secrets,
-            profile=profile,
-            **kwargs,
-        )
-        self.schedule = schedule
-
-
-class TaskValidatorFlowerAppTrain(TaskValidatorFunction):
-    """
-    TaskValidatorFlowerAppTrain validator.
-    """
+    """Specification for a Flower application training task."""
 
     schedule: str | None = None

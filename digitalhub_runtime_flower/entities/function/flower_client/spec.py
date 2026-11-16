@@ -4,16 +4,8 @@
 
 from __future__ import annotations
 
-from digitalhub_runtime_flower.entities.function._base.spec import FunctionSpecFlower, FunctionValidatorFlower
+from digitalhub_runtime_flower.entities.function._base.spec import FunctionSpecFlower
 
 
 class FunctionSpecFlowerClient(FunctionSpecFlower):
-    """
-    FunctionSpecFlowerClient specifications.
-    """
-
-
-class FunctionValidatorFlowerClient(FunctionValidatorFlower):
-    """
-    FunctionValidatorFlowerClient validator.
-    """
+    """Specification for a Flower client function."""

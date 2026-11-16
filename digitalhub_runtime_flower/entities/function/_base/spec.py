@@ -4,31 +4,11 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.function._base.spec import FunctionSpec, FunctionValidator
+from digitalhub.entities.function._base.spec import FunctionSpec
 
 
 class FunctionSpecFlower(FunctionSpec):
-    """
-    FunctionSpecFlower specifications.
-    """
-
-    def __init__(
-        self,
-        image: str | None = None,
-        base_image: str | None = None,
-        requirements: list | None = None,
-        **kwargs,
-    ) -> None:
-        super().__init__(**kwargs)
-        self.image = image
-        self.base_image = base_image
-        self.requirements = requirements
-
-
-class FunctionValidatorFlower(FunctionValidator):
-    """
-    FunctionValidatorFlower validator.
-    """
+    """Specification shared by Flower functions."""
 
     image: str | None = None
     base_image: str | None = None

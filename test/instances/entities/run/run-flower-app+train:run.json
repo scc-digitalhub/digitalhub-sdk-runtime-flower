@@ -37,7 +37,6 @@
       "secret-key"
     ],
     "profile": "1xa100",
-    "schedule": "0 0 * * *",
     "fab_source": {
       "source": "git+https://github.com/example/flower-app",
       "clientapp": "client:app",
