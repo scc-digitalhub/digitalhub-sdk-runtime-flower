@@ -4,10 +4,13 @@
 
 from __future__ import annotations
 
+from digitalhub.entities.run._base.spec import LocalExecutionSpecMixin
+
 from digitalhub_runtime_flower.entities.run._base.spec import RunSpecFlowerRun
+from digitalhub_runtime_flower.entities.task.flower_app_train.spec import FlowerTrainSpecMixin
 
 
-class RunSpecFlowerAppTrain(RunSpecFlowerRun):
+class RunSpecFlowerAppTrain(RunSpecFlowerRun, FlowerTrainSpecMixin, LocalExecutionSpecMixin):
     """Specification for a Flower application training run."""
 
     fab_source: dict | None = None
@@ -15,4 +18,3 @@ class RunSpecFlowerAppTrain(RunSpecFlowerRun):
     federation: str | None = None
     superlink: str | None = None
     root_certificates: str | None = None
-    local_execution: bool = False

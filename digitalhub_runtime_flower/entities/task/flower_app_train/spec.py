@@ -4,10 +4,13 @@
 
 from __future__ import annotations
 
+from digitalhub.entities._base.entity.spec import Spec
 from digitalhub.entities.task._base.spec import TaskSpecFunction
 
 
-class TaskSpecFlowerAppTrain(TaskSpecFunction):
-    """Specification for a Flower application training task."""
-
+class FlowerTrainSpecMixin(Spec):
     schedule: str | None = None
+
+
+class TaskSpecFlowerAppTrain(TaskSpecFunction, FlowerTrainSpecMixin):
+    """Specification for a Flower application training task."""

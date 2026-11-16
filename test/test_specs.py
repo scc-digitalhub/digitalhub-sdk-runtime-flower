@@ -41,33 +41,33 @@ def test_flower_task_and_run_specs_keep_task_fields_separate():
         task="task",
         federation="federation",
         local_execution=True,
+        schedule="0 0 * * *",
     )
     client_build = build_spec(
         RunSpecFlowerClientBuild,
         task="task",
         superlink="superlink",
         node_config={"partition-id": 1},
+        instructions=["pip install flwr"],
     )
     server_build = build_spec(
         RunSpecFlowerServerBuild,
         task="task",
         auth_public_keys=["key"],
         insecure=True,
+        instructions=["pip install flwr"],
     )
 
     assert task.schedule == "0 0 * * *"
     assert build_task.instructions == ["pip install flwr"]
     assert app_run.federation == "federation"
     assert app_run.local_execution is True
+    assert app_run.schedule == "0 0 * * *"
     assert client_build.node_config == {"partition-id": 1}
+    assert client_build.instructions == ["pip install flwr"]
     assert server_build.auth_public_keys == ["key"]
     assert server_build.insecure is True
-
-    with pytest.raises(TypeError, match="schedule"):
-        build_spec(RunSpecFlowerAppTrain, task="task", schedule="0 0 * * *")
-
-    with pytest.raises(TypeError, match="instructions"):
-        build_spec(RunSpecFlowerServerBuild, task="task", instructions=["apt-get update"])
+    assert server_build.instructions == ["pip install flwr"]
 
     legacy = RunSpecFlowerAppTrain.from_dict({"task": "task", "schedule": "0 0 * * *"})
     assert legacy.to_dict()["schedule"] == "0 0 * * *"

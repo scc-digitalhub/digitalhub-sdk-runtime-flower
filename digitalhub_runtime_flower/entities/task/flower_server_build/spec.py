@@ -3,10 +3,8 @@
 # SPDX-License-Identifier: Apache-2.0
 from __future__ import annotations
 
-from digitalhub.entities.task._base.spec import TaskSpecFunction
+from digitalhub.entities.task._base.spec import BuildSpecMixin, TaskSpecFunction
 
 
-class TaskSpecFlowerServerBuild(TaskSpecFunction):
+class TaskSpecFlowerServerBuild(TaskSpecFunction, BuildSpecMixin):
     """Specification for a Flower server build task."""
-
-    instructions: list[str] | None = None

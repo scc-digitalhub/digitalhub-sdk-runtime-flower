@@ -4,13 +4,13 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.run._base.entity import Run
+from digitalhub.entities.run._base.entity import LocalExecutionRunMixin, Run
 
 from digitalhub_runtime_flower.entities.run.flower_app_train.spec import RunSpecFlowerAppTrain
 from digitalhub_runtime_flower.entities.run.flower_app_train.status import RunStatusFlowerAppTrain
 
 
-class RunFlowerAppTrain(Run):
+class RunFlowerAppTrain(LocalExecutionRunMixin, Run):
     """
     RunFlowerAppTrain class.
     """
@@ -20,14 +20,3 @@ class RunFlowerAppTrain(Run):
 
         self.spec: RunSpecFlowerAppTrain
         self.status: RunStatusFlowerAppTrain
-
-    def local_execution(self) -> bool:
-        """
-        Check if run has local execution.
-
-        Returns
-        -------
-        bool
-            True if run has local execution, False otherwise.
-        """
-        return self.spec.local_execution
