@@ -5,9 +5,9 @@
 from __future__ import annotations
 
 from digitalhub.entities.run._base.entity import LocalExecutionRunMixin, Run
+from digitalhub.entities.run._base.status import RunStatus
 
 from digitalhub_runtime_flower.entities.run.flower_app_train.spec import RunSpecFlowerAppTrain
-from digitalhub_runtime_flower.entities.run.flower_app_train.status import RunStatusFlowerAppTrain
 
 
 class RunFlowerAppTrain(LocalExecutionRunMixin, Run):
@@ -19,4 +19,4 @@ class RunFlowerAppTrain(LocalExecutionRunMixin, Run):
         super().__init__(*args, **kwargs)
 
         self.spec: RunSpecFlowerAppTrain
-        self.status: RunStatusFlowerAppTrain
+        self.status: RunStatus

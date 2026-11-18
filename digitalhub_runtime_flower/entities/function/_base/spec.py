@@ -4,10 +4,10 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.function._base.spec import FunctionSpec
+from digitalhub.entities._base.entity.spec import Spec
 
 
-class FunctionSpecFlower(FunctionSpec):
+class FunctionSpecFlower(Spec):
     """Specification shared by Flower functions."""
 
     image: str | None = None

@@ -5,12 +5,12 @@
 from __future__ import annotations
 
 from digitalhub.entities.run._base.builder import RunBuilder
+from digitalhub.entities.run._base.status import RunStatus
 
 from digitalhub_runtime_flower.entities._base.runtime_entity.builder import RuntimeEntityBuilderFlowerApp
 from digitalhub_runtime_flower.entities._commons.enums import EntityKinds
 from digitalhub_runtime_flower.entities.run.flower_app_train.entity import RunFlowerAppTrain
 from digitalhub_runtime_flower.entities.run.flower_app_train.spec import RunSpecFlowerAppTrain
-from digitalhub_runtime_flower.entities.run.flower_app_train.status import RunStatusFlowerAppTrain
 
 
 class RunFlowerAppTrainBuilder(RunBuilder, RuntimeEntityBuilderFlowerApp):
@@ -20,5 +20,5 @@ class RunFlowerAppTrainBuilder(RunBuilder, RuntimeEntityBuilderFlowerApp):
 
     ENTITY_CLASS = RunFlowerAppTrain
     ENTITY_SPEC_CLASS = RunSpecFlowerAppTrain
-    ENTITY_STATUS_CLASS = RunStatusFlowerAppTrain
+    ENTITY_STATUS_CLASS = RunStatus
     ENTITY_KIND = EntityKinds.RUN_FLOWER_APP_TRAIN.value

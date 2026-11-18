@@ -2,9 +2,9 @@ import pytest
 from digitalhub.entities._constructors.spec import build_spec
 from pydantic import ValidationError
 
+from digitalhub_runtime_flower.entities.function._base.spec import FunctionSpecFlower
 from digitalhub_runtime_flower.entities.function.flower_app.models import FABSource
 from digitalhub_runtime_flower.entities.function.flower_app.spec import FunctionSpecFlowerApp
-from digitalhub_runtime_flower.entities.function.flower_client.spec import FunctionSpecFlowerClient
 from digitalhub_runtime_flower.entities.run.flower_app_train.spec import RunSpecFlowerAppTrain
 from digitalhub_runtime_flower.entities.run.flower_client_build.spec import RunSpecFlowerClientBuild
 from digitalhub_runtime_flower.entities.run.flower_server_build.spec import RunSpecFlowerServerBuild
@@ -18,7 +18,7 @@ def test_flower_function_specs_validate_fields_and_nested_fab_source():
         fab_source={"clientapp": "client:app"},
         requirements="flwr>=1.10",
     )
-    client = build_spec(FunctionSpecFlowerClient, requirements=["flwr>=1.10"])
+    client = build_spec(FunctionSpecFlower, requirements=["flwr>=1.10"])
 
     assert isinstance(app.fab_source, FABSource)
     assert app.fab_source.clientapp == "client:app"

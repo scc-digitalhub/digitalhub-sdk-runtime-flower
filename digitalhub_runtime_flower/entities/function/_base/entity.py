@@ -4,12 +4,12 @@
 
 from __future__ import annotations
 
+from digitalhub.entities._base.entity.status import Status
 from digitalhub.entities.function._base.entity import Function
 
 from digitalhub_runtime_flower.entities._commons.enums import Actions
 from digitalhub_runtime_flower.entities._commons.requirement_parser.parser import RequirementParser
 from digitalhub_runtime_flower.entities.function._base.spec import FunctionSpecFlower
-from digitalhub_runtime_flower.entities.function._base.status import FunctionStatusFlower
 
 
 class FunctionFlower(Function):
@@ -21,7 +21,7 @@ class FunctionFlower(Function):
         super().__init__(*args, **kwargs)
 
         self.spec: FunctionSpecFlower
-        self.status: FunctionStatusFlower
+        self.status: Status
 
     def _post_create_hook_before_save(self) -> None:
         """

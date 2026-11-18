@@ -4,9 +4,10 @@
 
 from __future__ import annotations
 
+from digitalhub.entities._base.entity.status import Status
+
 from digitalhub_runtime_flower.entities.function._base.entity import FunctionFlowerBuild
-from digitalhub_runtime_flower.entities.function.flower_client.spec import FunctionSpecFlowerClient
-from digitalhub_runtime_flower.entities.function.flower_client.status import FunctionStatusFlowerClient
+from digitalhub_runtime_flower.entities.function._base.spec import FunctionSpecFlower
 
 
 class FunctionFlowerClient(FunctionFlowerBuild):
@@ -17,5 +18,5 @@ class FunctionFlowerClient(FunctionFlowerBuild):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
-        self.spec: FunctionSpecFlowerClient
-        self.status: FunctionStatusFlowerClient
+        self.spec: FunctionSpecFlower
+        self.status: Status

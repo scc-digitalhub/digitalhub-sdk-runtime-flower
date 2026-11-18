@@ -5,9 +5,9 @@
 from __future__ import annotations
 
 from digitalhub.entities.run._base.entity import Run
+from digitalhub.entities.run._base.status import RunStatus
 
 from digitalhub_runtime_flower.entities.run.flower_server_deploy.spec import RunSpecFlowerServerDeploy
-from digitalhub_runtime_flower.entities.run.flower_server_deploy.status import RunStatusFlowerServerDeploy
 
 
 class RunFlowerServerDeploy(Run):
@@ -19,4 +19,4 @@ class RunFlowerServerDeploy(Run):
         super().__init__(*args, **kwargs)
 
         self.spec: RunSpecFlowerServerDeploy
-        self.status: RunStatusFlowerServerDeploy
+        self.status: RunStatus
