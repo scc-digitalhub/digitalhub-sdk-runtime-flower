@@ -4,10 +4,10 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.run._base.spec import RunSpec
+from digitalhub.entities.run._base.spec import RunSpecFunction
 
 
-class RunSpecFlowerRun(RunSpec):
+class RunSpecFlowerRun(RunSpecFunction):
     """Specification shared by Flower runs."""
 
     image: str | None = None

@@ -4,10 +4,10 @@
 
 from __future__ import annotations
 
+from digitalhub.entities._base.entity.status import Status
 from digitalhub.entities.task._base.entity import Task
 
 from digitalhub_runtime_flower.entities.task.flower_server_build.spec import TaskSpecFlowerServerBuild
-from digitalhub_runtime_flower.entities.task.flower_server_build.status import TaskStatusFlowerServerBuild
 
 
 class TaskFlowerServerBuild(Task):
@@ -19,4 +19,4 @@ class TaskFlowerServerBuild(Task):
         super().__init__(*args, **kwargs)
 
         self.spec: TaskSpecFlowerServerBuild
-        self.status: TaskStatusFlowerServerBuild
+        self.status: Status

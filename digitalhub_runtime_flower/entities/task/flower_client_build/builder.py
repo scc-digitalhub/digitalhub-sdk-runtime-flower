@@ -4,13 +4,13 @@
 
 from __future__ import annotations
 
+from digitalhub.entities._base.entity.status import Status
 from digitalhub.entities.task._base.builder import TaskBuilder
 
 from digitalhub_runtime_flower.entities._base.runtime_entity.builder import RuntimeEntityBuilderFlowerClient
 from digitalhub_runtime_flower.entities._commons.enums import EntityKinds
 from digitalhub_runtime_flower.entities.task.flower_client_build.entity import TaskFlowerClientBuild
 from digitalhub_runtime_flower.entities.task.flower_client_build.spec import TaskSpecFlowerClientBuild
-from digitalhub_runtime_flower.entities.task.flower_client_build.status import TaskStatusFlowerClientBuild
 
 
 class TaskFlowerClientBuildBuilder(TaskBuilder, RuntimeEntityBuilderFlowerClient):
@@ -20,5 +20,5 @@ class TaskFlowerClientBuildBuilder(TaskBuilder, RuntimeEntityBuilderFlowerClient
 
     ENTITY_CLASS = TaskFlowerClientBuild
     ENTITY_SPEC_CLASS = TaskSpecFlowerClientBuild
-    ENTITY_STATUS_CLASS = TaskStatusFlowerClientBuild
+    ENTITY_STATUS_CLASS = Status
     ENTITY_KIND = EntityKinds.TASK_FLOWER_CLIENT_BUILD.value

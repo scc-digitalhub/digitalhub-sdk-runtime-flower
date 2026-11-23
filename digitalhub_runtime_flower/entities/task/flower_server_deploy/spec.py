@@ -5,4 +5,8 @@ from __future__ import annotations
 
 from digitalhub.entities.task._base.spec import TaskSpecFunction
 
-TaskSpecFlowerServerDeploy = TaskSpecFunction
+from digitalhub_runtime_flower.entities._mixin.execution.spec import FlowerServerSpecMixin
+
+
+class TaskSpecFlowerServerDeploy(TaskSpecFunction, FlowerServerSpecMixin):
+    """Specification for a Flower server deployment task."""

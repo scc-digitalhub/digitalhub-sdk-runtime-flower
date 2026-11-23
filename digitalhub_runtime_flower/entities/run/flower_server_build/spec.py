@@ -4,16 +4,11 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.task._base.spec import BuildSpecMixin
+from digitalhub.entities._mixin.execution.spec import BuildSpecMixin
 
+from digitalhub_runtime_flower.entities._mixin.execution.spec import FlowerServerSpecMixin
 from digitalhub_runtime_flower.entities.run._base.spec import RunSpecFlowerRun
 
 
-class RunSpecFlowerServerBuild(RunSpecFlowerRun, BuildSpecMixin):
+class RunSpecFlowerServerBuild(RunSpecFlowerRun, BuildSpecMixin, FlowerServerSpecMixin):
     """Specification for a Flower server build run."""
-
-    auth_public_keys: list[str] | None = None
-    """List of public keys for authentication."""
-
-    insecure: bool = False
-    """Flag to allow insecure connections."""

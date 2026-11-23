@@ -4,15 +4,9 @@
 
 from __future__ import annotations
 
+from digitalhub_runtime_flower.entities._mixin.execution.spec import FlowerClientSpecMixin
 from digitalhub_runtime_flower.entities.run._base.spec import RunSpecFlowerRun
 
 
-class RunSpecFlowerClientDeploy(RunSpecFlowerRun):
+class RunSpecFlowerClientDeploy(RunSpecFlowerRun, FlowerClientSpecMixin):
     """Specification for a Flower client deployment run."""
-
-    superlink: str | None = None
-    node_config: dict | None = None
-    root_certificates: str | None = None
-    private_key_secret: str | None = None
-    public_key_secret: str | None = None
-    isolation: str | None = None

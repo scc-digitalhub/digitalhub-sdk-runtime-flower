@@ -24,3 +24,20 @@ class RunStatusFlowerRun(RunStatus):
     ) -> None:
         super().__init__(state, message, transitions, k8s, metrics, **kwargs)
         self.flwr_run_id = flwr_run_id
+
+
+class RunStatusFlowerBuild(RunStatus):
+    """Status shared by Flower build runs."""
+
+    def __init__(
+        self,
+        state: str,
+        message: str | None = None,
+        transitions: list[dict] | None = None,
+        k8s: dict | None = None,
+        metrics: dict | None = None,
+        outputs: dict | None = None,
+        **kwargs,
+    ) -> None:
+        super().__init__(state, message, transitions, k8s, metrics, **kwargs)
+        self.outputs = outputs

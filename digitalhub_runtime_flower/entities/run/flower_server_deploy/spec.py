@@ -4,14 +4,9 @@
 
 from __future__ import annotations
 
+from digitalhub_runtime_flower.entities._mixin.execution.spec import FlowerServerSpecMixin
 from digitalhub_runtime_flower.entities.run._base.spec import RunSpecFlowerRun
 
 
-class RunSpecFlowerServerDeploy(RunSpecFlowerRun):
+class RunSpecFlowerServerDeploy(RunSpecFlowerRun, FlowerServerSpecMixin):
     """Specification for a Flower server deployment run."""
-
-    auth_public_keys: list[str] | None = None
-    """Authentication public keys."""
-
-    insecure: bool = False
-    """Disable TLS verification."""

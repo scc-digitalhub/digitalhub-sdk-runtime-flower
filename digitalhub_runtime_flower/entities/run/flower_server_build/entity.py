@@ -6,8 +6,8 @@ from __future__ import annotations
 
 from digitalhub.entities.run._base.entity import Run
 
+from digitalhub_runtime_flower.entities.run._base.status import RunStatusFlowerBuild
 from digitalhub_runtime_flower.entities.run.flower_server_build.spec import RunSpecFlowerServerBuild
-from digitalhub_runtime_flower.entities.run.flower_server_build.status import RunStatusFlowerServerBuild
 
 
 class RunFlowerServerBuild(Run):
@@ -19,7 +19,7 @@ class RunFlowerServerBuild(Run):
         super().__init__(*args, **kwargs)
 
         self.spec: RunSpecFlowerServerBuild
-        self.status: RunStatusFlowerServerBuild
+        self.status: RunStatusFlowerBuild
 
     @property
     def image(self) -> str | None:
