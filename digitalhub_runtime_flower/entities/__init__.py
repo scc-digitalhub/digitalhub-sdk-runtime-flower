@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-from digitalhub.factory.plugins import CrudPlugin, EntityPlugin
+from digitalhub.plugins import CrudPlugin, EntityPlugin
 
 from digitalhub_runtime_flower.entities.function.flower_app.builder import FunctionFlowerAppBuilder
 from digitalhub_runtime_flower.entities.function.flower_app.crud import new_function_flower_app
@@ -21,43 +21,39 @@ from digitalhub_runtime_flower.entities.task.flower_client_deploy.builder import
 from digitalhub_runtime_flower.entities.task.flower_server_build.builder import TaskFlowerServerBuildBuilder
 from digitalhub_runtime_flower.entities.task.flower_server_deploy.builder import TaskFlowerServerDeployBuilder
 
-try:
-    from digitalhub_runtime_flower.runtimes.builder import RuntimeFlowerAppBuilder, RuntimeFlowerBuilder
-except ImportError as e:
-    from digitalhub.utils.logger.logger import get_logger
-
-    get_logger(__name__).debug(f"Error importing runtime builders: {e}")
-    RuntimeFlowerAppBuilder = None
-    RuntimeFlowerBuilder = None
+# Imported on first use: the entities register even when the runtime cannot be
+# imported, and the import error is reported when a run executes locally.
+RUNTIME_FLOWER_APP_BUILDER = "digitalhub_runtime_flower.runtimes.builder:RuntimeFlowerAppBuilder"
+RUNTIME_FLOWER_BUILDER = "digitalhub_runtime_flower.runtimes.builder:RuntimeFlowerBuilder"
 
 function_flower_app_plugin = EntityPlugin(
     builder=FunctionFlowerAppBuilder,
     shortcuts=(CrudPlugin(new_function_flower_app),),
-    runtime_builder=RuntimeFlowerAppBuilder,
+    runtime_builder=RUNTIME_FLOWER_APP_BUILDER,
 )
 function_flower_server_plugin = EntityPlugin(
     builder=FunctionFlowerServerBuilder,
     shortcuts=(CrudPlugin(new_function_flower_server),),
-    runtime_builder=RuntimeFlowerBuilder,
+    runtime_builder=RUNTIME_FLOWER_BUILDER,
 )
 function_flower_client_plugin = EntityPlugin(
     builder=FunctionFlowerClientBuilder,
     shortcuts=(CrudPlugin(new_function_flower_client),),
-    runtime_builder=RuntimeFlowerBuilder,
+    runtime_builder=RUNTIME_FLOWER_BUILDER,
 )
 
 entity_plugins = (
     function_flower_app_plugin,
     function_flower_server_plugin,
     function_flower_client_plugin,
-    EntityPlugin(builder=TaskFlowerAppTrainBuilder, runtime_builder=RuntimeFlowerAppBuilder),
-    EntityPlugin(builder=TaskFlowerServerBuildBuilder, runtime_builder=RuntimeFlowerBuilder),
-    EntityPlugin(builder=TaskFlowerServerDeployBuilder, runtime_builder=RuntimeFlowerBuilder),
-    EntityPlugin(builder=TaskFlowerClientBuildBuilder, runtime_builder=RuntimeFlowerBuilder),
-    EntityPlugin(builder=TaskFlowerClientDeployBuilder, runtime_builder=RuntimeFlowerBuilder),
-    EntityPlugin(builder=RunFlowerAppTrainBuilder, runtime_builder=RuntimeFlowerAppBuilder),
-    EntityPlugin(builder=RunFlowerServerBuildBuilder, runtime_builder=RuntimeFlowerBuilder),
-    EntityPlugin(builder=RunFlowerServerDeployBuilder, runtime_builder=RuntimeFlowerBuilder),
-    EntityPlugin(builder=RunFlowerClientBuildBuilder, runtime_builder=RuntimeFlowerBuilder),
-    EntityPlugin(builder=RunFlowerClientDeployBuilder, runtime_builder=RuntimeFlowerBuilder),
+    EntityPlugin(builder=TaskFlowerAppTrainBuilder, runtime_builder=RUNTIME_FLOWER_APP_BUILDER),
+    EntityPlugin(builder=TaskFlowerServerBuildBuilder, runtime_builder=RUNTIME_FLOWER_BUILDER),
+    EntityPlugin(builder=TaskFlowerServerDeployBuilder, runtime_builder=RUNTIME_FLOWER_BUILDER),
+    EntityPlugin(builder=TaskFlowerClientBuildBuilder, runtime_builder=RUNTIME_FLOWER_BUILDER),
+    EntityPlugin(builder=TaskFlowerClientDeployBuilder, runtime_builder=RUNTIME_FLOWER_BUILDER),
+    EntityPlugin(builder=RunFlowerAppTrainBuilder, runtime_builder=RUNTIME_FLOWER_APP_BUILDER),
+    EntityPlugin(builder=RunFlowerServerBuildBuilder, runtime_builder=RUNTIME_FLOWER_BUILDER),
+    EntityPlugin(builder=RunFlowerServerDeployBuilder, runtime_builder=RUNTIME_FLOWER_BUILDER),
+    EntityPlugin(builder=RunFlowerClientBuildBuilder, runtime_builder=RUNTIME_FLOWER_BUILDER),
+    EntityPlugin(builder=RunFlowerClientDeployBuilder, runtime_builder=RUNTIME_FLOWER_BUILDER),
 )

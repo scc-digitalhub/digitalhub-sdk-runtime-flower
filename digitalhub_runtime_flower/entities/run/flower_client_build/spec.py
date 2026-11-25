@@ -4,7 +4,7 @@
 
 from __future__ import annotations
 
-from digitalhub.entities._mixin.execution.spec import BuildSpecMixin
+from digitalhub.plugins import BuildSpecMixin
 
 from digitalhub_runtime_flower.entities._mixin.execution.spec import FlowerClientSpecMixin
 from digitalhub_runtime_flower.entities.run._base.spec import RunSpecFlowerRun

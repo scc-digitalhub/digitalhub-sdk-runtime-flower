@@ -9,7 +9,7 @@ import typing
 from digitalhub_runtime_flower.entities.function._base.entity import FunctionFlower
 
 if typing.TYPE_CHECKING:
-    from digitalhub.entities._base.entity.status import Status
+    from digitalhub.plugins import Status
 
     from digitalhub_runtime_flower.entities.function.flower_app.spec import FunctionSpecFlowerApp
 

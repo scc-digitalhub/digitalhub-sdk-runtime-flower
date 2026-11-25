@@ -4,8 +4,7 @@
 
 from __future__ import annotations
 
-from digitalhub.entities._base.entity.status import Status
-from digitalhub.entities.function._base.builder import FunctionBuilder
+from digitalhub.plugins import FunctionBuilder, Status
 
 from digitalhub_runtime_flower.entities.function._base.entity import FunctionFlower
 from digitalhub_runtime_flower.entities.function._base.spec import FunctionSpecFlower

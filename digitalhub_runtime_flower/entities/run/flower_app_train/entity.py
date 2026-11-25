@@ -4,8 +4,7 @@
 
 from __future__ import annotations
 
-from digitalhub.entities.run._base.entity import LocalExecutionRunMixin, Run
-from digitalhub.entities.run._base.status import RunStatus
+from digitalhub.plugins import LocalExecutionRunMixin, Run, RunStatus
 
 from digitalhub_runtime_flower.entities.run.flower_app_train.spec import RunSpecFlowerAppTrain
 

@@ -4,8 +4,7 @@
 
 from __future__ import annotations
 
-from digitalhub.entities._base.entity.status import Status
-from digitalhub.entities.function._base.entity import Function
+from digitalhub.plugins import Function, Status
 
 from digitalhub_runtime_flower.entities._commons.enums import Actions
 from digitalhub_runtime_flower.entities._commons.requirement_parser.parser import RequirementParser
