@@ -8,7 +8,7 @@ import typing
 
 from digitalhub.entities.function.crud import new_function
 
-from digitalhub_runtime_flower.entities.function.flower_server.builder import FunctionFlowerServerBuilder
+from digitalhub_runtime_flower.entities._commons.enums import EntityKinds
 
 if typing.TYPE_CHECKING:
     from digitalhub_runtime_flower.entities.function.flower_server.entity import FunctionFlowerServer
@@ -46,7 +46,7 @@ def new_function_flower_server(
     return new_function(
         project=project,
         name=name,
-        kind=FunctionFlowerServerBuilder.ENTITY_KIND,
+        kind=EntityKinds.FUNCTION_FLOWER_SERVER.value,
         uuid=uuid,
         version=version,
         description=description,

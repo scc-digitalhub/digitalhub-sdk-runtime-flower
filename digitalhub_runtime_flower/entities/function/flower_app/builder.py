@@ -4,25 +4,16 @@
 
 from __future__ import annotations
 
-from digitalhub.plugins import Status
+from digitalhub.plugins import FunctionBuilder
 
-from digitalhub_runtime_flower.entities._base.runtime_entity.builder import RuntimeEntityBuilderFlowerApp
-from digitalhub_runtime_flower.entities._commons.enums import EntityKinds
-from digitalhub_runtime_flower.entities.function._base.builder import FunctionFlowerBuilder
 from digitalhub_runtime_flower.entities.function.flower_app.entity import FunctionFlowerApp
-from digitalhub_runtime_flower.entities.function.flower_app.spec import FunctionSpecFlowerApp
 from digitalhub_runtime_flower.entities.function.flower_app.utils import source_check, source_post_check
 
 
-class FunctionFlowerAppBuilder(FunctionFlowerBuilder, RuntimeEntityBuilderFlowerApp):
+class FunctionFlowerAppBaseBuilder(FunctionBuilder):
     """
-    FunctionFlowerApp builder.
+    Base of the flower-app function builder: checks the FAB source.
     """
-
-    ENTITY_CLASS = FunctionFlowerApp
-    ENTITY_SPEC_CLASS = FunctionSpecFlowerApp
-    ENTITY_STATUS_CLASS = Status
-    ENTITY_KIND = EntityKinds.FUNCTION_FLOWER_APP.value
 
     def build(
         self,

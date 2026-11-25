@@ -1,7 +1,9 @@
 import pytest
+from digitalhub.factory.registry import registry
 from digitalhub.plugins import build_spec
 from pydantic import ValidationError
 
+from digitalhub_runtime_flower.entities._commons.enums import EntityKinds
 from digitalhub_runtime_flower.entities._mixin.execution.spec import (
     FlowerClientSpecMixin,
     FlowerConnectionSpecMixin,
@@ -13,10 +15,8 @@ from digitalhub_runtime_flower.entities.function.flower_app.models import FABSou
 from digitalhub_runtime_flower.entities.function.flower_app.spec import FunctionSpecFlowerApp
 from digitalhub_runtime_flower.entities.run._base.status import RunStatusFlowerBuild
 from digitalhub_runtime_flower.entities.run.flower_app_train.spec import RunSpecFlowerAppTrain
-from digitalhub_runtime_flower.entities.run.flower_client_build.builder import RunFlowerClientBuildBuilder
 from digitalhub_runtime_flower.entities.run.flower_client_build.spec import RunSpecFlowerClientBuild
 from digitalhub_runtime_flower.entities.run.flower_client_deploy.spec import RunSpecFlowerClientDeploy
-from digitalhub_runtime_flower.entities.run.flower_server_build.builder import RunFlowerServerBuildBuilder
 from digitalhub_runtime_flower.entities.run.flower_server_build.spec import RunSpecFlowerServerBuild
 from digitalhub_runtime_flower.entities.run.flower_server_deploy.spec import RunSpecFlowerServerDeploy
 from digitalhub_runtime_flower.entities.task.flower_app_train.spec import TaskSpecFlowerAppTrain
@@ -111,5 +111,11 @@ def test_flower_runtime_spec_mixins_have_one_owner():
     ):
         assert FlowerServerSpecMixin in spec_class.__mro__
 
-    assert RunFlowerClientBuildBuilder.ENTITY_STATUS_CLASS is RunStatusFlowerBuild
-    assert RunFlowerServerBuildBuilder.ENTITY_STATUS_CLASS is RunStatusFlowerBuild
+    assert (
+        registry.get_entity_builder(EntityKinds.RUN_FLOWER_CLIENT_BUILD.value).ENTITY_STATUS_CLASS
+        is RunStatusFlowerBuild
+    )
+    assert (
+        registry.get_entity_builder(EntityKinds.RUN_FLOWER_SERVER_BUILD.value).ENTITY_STATUS_CLASS
+        is RunStatusFlowerBuild
+    )
