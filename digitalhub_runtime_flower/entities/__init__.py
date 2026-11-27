@@ -27,13 +27,12 @@ from digitalhub_runtime_flower.entities.function.flower_client.crud import new_f
 from digitalhub_runtime_flower.entities.function.flower_client.entity import FunctionFlowerClient
 from digitalhub_runtime_flower.entities.function.flower_server.crud import new_function_flower_server
 from digitalhub_runtime_flower.entities.function.flower_server.entity import FunctionFlowerServer
+from digitalhub_runtime_flower.entities.run._base.entity import RunFlowerBuild
 from digitalhub_runtime_flower.entities.run._base.status import RunStatusFlowerBuild
 from digitalhub_runtime_flower.entities.run.flower_app_train.entity import RunFlowerAppTrain
 from digitalhub_runtime_flower.entities.run.flower_app_train.spec import RunSpecFlowerAppTrain
-from digitalhub_runtime_flower.entities.run.flower_client_build.entity import RunFlowerClientBuild
 from digitalhub_runtime_flower.entities.run.flower_client_build.spec import RunSpecFlowerClientBuild
 from digitalhub_runtime_flower.entities.run.flower_client_deploy.spec import RunSpecFlowerClientDeploy
-from digitalhub_runtime_flower.entities.run.flower_server_build.entity import RunFlowerServerBuild
 from digitalhub_runtime_flower.entities.run.flower_server_build.spec import RunSpecFlowerServerBuild
 from digitalhub_runtime_flower.entities.run.flower_server_deploy.spec import RunSpecFlowerServerDeploy
 from digitalhub_runtime_flower.entities.task.flower_app_train.spec import TaskSpecFlowerAppTrain
@@ -87,7 +86,7 @@ flower_server = ExecFamily(
             ),
             run=BuilderDef(
                 EntityKinds.RUN_FLOWER_SERVER_BUILD,
-                RunFlowerServerBuild,
+                RunFlowerBuild,
                 RunSpecFlowerServerBuild,
                 RunStatusFlowerBuild,
                 base=RunBuilder,
@@ -133,7 +132,7 @@ flower_client = ExecFamily(
             ),
             run=BuilderDef(
                 EntityKinds.RUN_FLOWER_CLIENT_BUILD,
-                RunFlowerClientBuild,
+                RunFlowerBuild,
                 RunSpecFlowerClientBuild,
                 RunStatusFlowerBuild,
                 base=RunBuilder,
