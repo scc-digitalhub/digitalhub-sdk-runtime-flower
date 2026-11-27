@@ -5,6 +5,7 @@
 from digitalhub.plugins import (
     Action,
     BuilderDef,
+    BuildRun,
     CrudPlugin,
     ExecFamily,
     ExecutableActions,
@@ -25,7 +26,6 @@ from digitalhub_runtime_flower.entities.function.flower_app.crud import new_func
 from digitalhub_runtime_flower.entities.function.flower_app.spec import FunctionSpecFlowerApp
 from digitalhub_runtime_flower.entities.function.flower_client.crud import new_function_flower_client
 from digitalhub_runtime_flower.entities.function.flower_server.crud import new_function_flower_server
-from digitalhub_runtime_flower.entities.run._base.entity import RunFlowerBuild
 from digitalhub_runtime_flower.entities.run._base.status import RunStatusFlowerBuild
 from digitalhub_runtime_flower.entities.run.flower_app_train.entity import RunFlowerAppTrain
 from digitalhub_runtime_flower.entities.run.flower_app_train.spec import RunSpecFlowerAppTrain
@@ -84,7 +84,7 @@ flower_server = ExecFamily(
             ),
             run=BuilderDef(
                 EntityKinds.RUN_FLOWER_SERVER_BUILD,
-                RunFlowerBuild,
+                BuildRun,
                 RunSpecFlowerServerBuild,
                 RunStatusFlowerBuild,
                 base=RunBuilder,
@@ -130,7 +130,7 @@ flower_client = ExecFamily(
             ),
             run=BuilderDef(
                 EntityKinds.RUN_FLOWER_CLIENT_BUILD,
-                RunFlowerBuild,
+                BuildRun,
                 RunSpecFlowerClientBuild,
                 RunStatusFlowerBuild,
                 base=RunBuilder,
