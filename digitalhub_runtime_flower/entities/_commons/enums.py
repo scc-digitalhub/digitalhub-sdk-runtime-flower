@@ -34,6 +34,5 @@ class Actions(Enum):
     Task actions.
     """
 
-    BUILD = "build"
     DEPLOY = "deploy"
     TRAIN = "train"

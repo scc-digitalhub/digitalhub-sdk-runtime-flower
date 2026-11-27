@@ -7,6 +7,7 @@ from digitalhub.plugins import (
     BuilderDef,
     CrudPlugin,
     ExecFamily,
+    ExecutableActions,
     FunctionBuilder,
     Run,
     RunBuilder,
@@ -76,7 +77,7 @@ flower_server = ExecFamily(
         shortcuts=(CrudPlugin(new_function_flower_server),),
     ),
     actions={
-        Actions.BUILD: Action(
+        ExecutableActions.BUILD: Action(
             task=BuilderDef(
                 EntityKinds.TASK_FLOWER_SERVER_BUILD,
                 Task,
@@ -122,7 +123,7 @@ flower_client = ExecFamily(
         shortcuts=(CrudPlugin(new_function_flower_client),),
     ),
     actions={
-        Actions.BUILD: Action(
+        ExecutableActions.BUILD: Action(
             task=BuilderDef(
                 EntityKinds.TASK_FLOWER_CLIENT_BUILD,
                 Task,
