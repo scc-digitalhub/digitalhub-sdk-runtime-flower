@@ -4,9 +4,8 @@
 
 from __future__ import annotations
 
-from digitalhub.plugins import ExecutableBuildMixin, Function, Status
+from digitalhub.plugins import ExecutableBuildMixin, Function, Status, parse_requirements
 
-from digitalhub_runtime_flower.entities._commons.requirement_parser.parser import RequirementParser
 from digitalhub_runtime_flower.entities.function._base.spec import FunctionSpecFlower
 
 
@@ -27,7 +26,7 @@ class FunctionFlower(Function):
         in Core.
         Can be overridden in subclasses to implement custom behavior.
         """
-        self.spec.requirements = RequirementParser().parse(self.spec.requirements)
+        self.spec.requirements = parse_requirements(self.spec.requirements)
 
 
 class FunctionFlowerBuild(ExecutableBuildMixin, FunctionFlower):

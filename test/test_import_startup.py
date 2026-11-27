@@ -29,9 +29,9 @@ def test_importing_runtime_defers_pip_internals() -> None:
 
 
 def test_requirements_file_is_parsed_on_demand(tmp_path) -> None:
-    from digitalhub_runtime_flower.entities._commons.requirement_parser.parser import RequirementParser
+    from digitalhub.plugins import parse_requirements
 
     requirements_file = tmp_path / "requirements.txt"
     requirements_file.write_text("requests>=2\n", encoding="utf-8")
 
-    assert RequirementParser().parse(str(requirements_file)) == ["requests>=2"]
+    assert parse_requirements(str(requirements_file)) == ["requests>=2"]
