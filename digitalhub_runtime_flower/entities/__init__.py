@@ -8,9 +8,11 @@ from digitalhub.plugins import (
     CrudPlugin,
     ExecFamily,
     FunctionBuilder,
+    Run,
     RunBuilder,
     RunStatus,
     Status,
+    Task,
     TaskBuilder,
 )
 
@@ -29,21 +31,14 @@ from digitalhub_runtime_flower.entities.run.flower_app_train.entity import RunFl
 from digitalhub_runtime_flower.entities.run.flower_app_train.spec import RunSpecFlowerAppTrain
 from digitalhub_runtime_flower.entities.run.flower_client_build.entity import RunFlowerClientBuild
 from digitalhub_runtime_flower.entities.run.flower_client_build.spec import RunSpecFlowerClientBuild
-from digitalhub_runtime_flower.entities.run.flower_client_deploy.entity import RunFlowerClientDeploy
 from digitalhub_runtime_flower.entities.run.flower_client_deploy.spec import RunSpecFlowerClientDeploy
 from digitalhub_runtime_flower.entities.run.flower_server_build.entity import RunFlowerServerBuild
 from digitalhub_runtime_flower.entities.run.flower_server_build.spec import RunSpecFlowerServerBuild
-from digitalhub_runtime_flower.entities.run.flower_server_deploy.entity import RunFlowerServerDeploy
 from digitalhub_runtime_flower.entities.run.flower_server_deploy.spec import RunSpecFlowerServerDeploy
-from digitalhub_runtime_flower.entities.task.flower_app_train.entity import TaskFlowerAppTrain
 from digitalhub_runtime_flower.entities.task.flower_app_train.spec import TaskSpecFlowerAppTrain
-from digitalhub_runtime_flower.entities.task.flower_client_build.entity import TaskFlowerClientBuild
 from digitalhub_runtime_flower.entities.task.flower_client_build.spec import TaskSpecFlowerClientBuild
-from digitalhub_runtime_flower.entities.task.flower_client_deploy.entity import TaskFlowerClientDeploy
 from digitalhub_runtime_flower.entities.task.flower_client_deploy.spec import TaskSpecFlowerClientDeploy
-from digitalhub_runtime_flower.entities.task.flower_server_build.entity import TaskFlowerServerBuild
 from digitalhub_runtime_flower.entities.task.flower_server_build.spec import TaskSpecFlowerServerBuild
-from digitalhub_runtime_flower.entities.task.flower_server_deploy.entity import TaskFlowerServerDeploy
 from digitalhub_runtime_flower.entities.task.flower_server_deploy.spec import TaskSpecFlowerServerDeploy
 
 # Imported on first use: the entities register even when the runtime cannot be
@@ -62,9 +57,7 @@ flower_app = ExecFamily(
     ),
     actions={
         Actions.TRAIN: Action(
-            task=BuilderDef(
-                EntityKinds.TASK_FLOWER_APP_TRAIN, TaskFlowerAppTrain, TaskSpecFlowerAppTrain, Status, base=TaskBuilder
-            ),
+            task=BuilderDef(EntityKinds.TASK_FLOWER_APP_TRAIN, Task, TaskSpecFlowerAppTrain, Status, base=TaskBuilder),
             run=BuilderDef(
                 EntityKinds.RUN_FLOWER_APP_TRAIN, RunFlowerAppTrain, RunSpecFlowerAppTrain, RunStatus, base=RunBuilder
             ),
@@ -86,7 +79,7 @@ flower_server = ExecFamily(
         Actions.BUILD: Action(
             task=BuilderDef(
                 EntityKinds.TASK_FLOWER_SERVER_BUILD,
-                TaskFlowerServerBuild,
+                Task,
                 TaskSpecFlowerServerBuild,
                 Status,
                 base=TaskBuilder,
@@ -102,14 +95,14 @@ flower_server = ExecFamily(
         Actions.DEPLOY: Action(
             task=BuilderDef(
                 EntityKinds.TASK_FLOWER_SERVER_DEPLOY,
-                TaskFlowerServerDeploy,
+                Task,
                 TaskSpecFlowerServerDeploy,
                 Status,
                 base=TaskBuilder,
             ),
             run=BuilderDef(
                 EntityKinds.RUN_FLOWER_SERVER_DEPLOY,
-                RunFlowerServerDeploy,
+                Run,
                 RunSpecFlowerServerDeploy,
                 RunStatus,
                 base=RunBuilder,
@@ -132,7 +125,7 @@ flower_client = ExecFamily(
         Actions.BUILD: Action(
             task=BuilderDef(
                 EntityKinds.TASK_FLOWER_CLIENT_BUILD,
-                TaskFlowerClientBuild,
+                Task,
                 TaskSpecFlowerClientBuild,
                 Status,
                 base=TaskBuilder,
@@ -148,14 +141,14 @@ flower_client = ExecFamily(
         Actions.DEPLOY: Action(
             task=BuilderDef(
                 EntityKinds.TASK_FLOWER_CLIENT_DEPLOY,
-                TaskFlowerClientDeploy,
+                Task,
                 TaskSpecFlowerClientDeploy,
                 Status,
                 base=TaskBuilder,
             ),
             run=BuilderDef(
                 EntityKinds.RUN_FLOWER_CLIENT_DEPLOY,
-                RunFlowerClientDeploy,
+                Run,
                 RunSpecFlowerClientDeploy,
                 RunStatus,
                 base=RunBuilder,
