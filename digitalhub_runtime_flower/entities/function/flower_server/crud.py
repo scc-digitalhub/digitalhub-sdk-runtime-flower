@@ -11,7 +11,7 @@ from digitalhub.entities.function.crud import new_function
 from digitalhub_runtime_flower.entities._commons.enums import EntityKinds
 
 if typing.TYPE_CHECKING:
-    from digitalhub_runtime_flower.entities.function.flower_server.entity import FunctionFlowerServer
+    from digitalhub_runtime_flower.entities.function._base.entity import FunctionFlowerBuild
 
 
 def new_function_flower_server(
@@ -25,7 +25,7 @@ def new_function_flower_server(
     description: str | None = None,
     labels: list[str] | None = None,
     embedded: bool = False,
-) -> FunctionFlowerServer:
+) -> FunctionFlowerBuild:
     """
     Create a Flower server function entity.
 

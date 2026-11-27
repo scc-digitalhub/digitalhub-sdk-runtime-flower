@@ -18,15 +18,13 @@ from digitalhub.plugins import (
 )
 
 from digitalhub_runtime_flower.entities._commons.enums import Actions, EntityKinds
+from digitalhub_runtime_flower.entities.function._base.entity import FunctionFlower, FunctionFlowerBuild
 from digitalhub_runtime_flower.entities.function._base.spec import FunctionSpecFlower
 from digitalhub_runtime_flower.entities.function.flower_app.builder import FunctionFlowerAppBaseBuilder
 from digitalhub_runtime_flower.entities.function.flower_app.crud import new_function_flower_app
-from digitalhub_runtime_flower.entities.function.flower_app.entity import FunctionFlowerApp
 from digitalhub_runtime_flower.entities.function.flower_app.spec import FunctionSpecFlowerApp
 from digitalhub_runtime_flower.entities.function.flower_client.crud import new_function_flower_client
-from digitalhub_runtime_flower.entities.function.flower_client.entity import FunctionFlowerClient
 from digitalhub_runtime_flower.entities.function.flower_server.crud import new_function_flower_server
-from digitalhub_runtime_flower.entities.function.flower_server.entity import FunctionFlowerServer
 from digitalhub_runtime_flower.entities.run._base.entity import RunFlowerBuild
 from digitalhub_runtime_flower.entities.run._base.status import RunStatusFlowerBuild
 from digitalhub_runtime_flower.entities.run.flower_app_train.entity import RunFlowerAppTrain
@@ -49,7 +47,7 @@ RUNTIME_FLOWER_BUILDER = "digitalhub_runtime_flower.runtimes.builder:RuntimeFlow
 flower_app = ExecFamily(
     executable=BuilderDef(
         EntityKinds.FUNCTION_FLOWER_APP,
-        FunctionFlowerApp,
+        FunctionFlower,
         FunctionSpecFlowerApp,
         Status,
         base=FunctionFlowerAppBaseBuilder,
@@ -69,7 +67,7 @@ flower_app = ExecFamily(
 flower_server = ExecFamily(
     executable=BuilderDef(
         EntityKinds.FUNCTION_FLOWER_SERVER,
-        FunctionFlowerServer,
+        FunctionFlowerBuild,
         FunctionSpecFlower,
         Status,
         base=FunctionBuilder,
@@ -115,7 +113,7 @@ flower_server = ExecFamily(
 flower_client = ExecFamily(
     executable=BuilderDef(
         EntityKinds.FUNCTION_FLOWER_CLIENT,
-        FunctionFlowerClient,
+        FunctionFlowerBuild,
         FunctionSpecFlower,
         Status,
         base=FunctionBuilder,

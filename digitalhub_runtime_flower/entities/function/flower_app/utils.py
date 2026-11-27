@@ -12,7 +12,7 @@ from digitalhub.utils.generic_utils import encode_source, encode_string
 from digitalhub.utils.uri_utils import has_git_scheme, has_local_scheme
 
 if typing.TYPE_CHECKING:
-    from digitalhub_runtime_flower.entities.function.flower_app.entity import FunctionFlowerApp
+    from digitalhub_runtime_flower.entities.function._base.entity import FunctionFlower
 
 
 def source_check(**kwargs) -> dict:
@@ -149,18 +149,18 @@ def _check_params(
     return fab_source
 
 
-def source_post_check(exec: FunctionFlowerApp) -> FunctionFlowerApp:
+def source_post_check(exec: FunctionFlower) -> FunctionFlower:
     """
     Post check source.
 
     Parameters
     ----------
-    exec : FunctionFlowerApp
+    exec : FunctionFlower
         Executable.
 
     Returns
     -------
-    FunctionFlowerApp
+    FunctionFlower
         Updated executable.
     """
     return exec

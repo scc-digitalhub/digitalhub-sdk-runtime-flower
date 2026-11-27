@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from digitalhub.plugins import FunctionBuilder
 
-from digitalhub_runtime_flower.entities.function.flower_app.entity import FunctionFlowerApp
+from digitalhub_runtime_flower.entities.function._base.entity import FunctionFlower
 from digitalhub_runtime_flower.entities.function.flower_app.utils import source_check, source_post_check
 
 
@@ -26,7 +26,7 @@ class FunctionFlowerAppBaseBuilder(FunctionBuilder):
         labels: list[str] | None = None,
         embedded: bool = False,
         **kwargs,
-    ) -> FunctionFlowerApp:
+    ) -> FunctionFlower:
         kwargs = source_check(**kwargs)
         obj = super().build(
             kind=kind,
@@ -41,7 +41,7 @@ class FunctionFlowerAppBaseBuilder(FunctionBuilder):
         )
         return source_post_check(obj)
 
-    def from_dict(self, obj: dict) -> FunctionFlowerApp:
+    def from_dict(self, obj: dict) -> FunctionFlower:
         """
         Create a new object from dictionary.
 
@@ -52,7 +52,7 @@ class FunctionFlowerAppBaseBuilder(FunctionBuilder):
 
         Returns
         -------
-        FunctionFlowerApp
+        FunctionFlower
             Object instance.
         """
         entity = super().from_dict(obj)
